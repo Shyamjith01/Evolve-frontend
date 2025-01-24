@@ -1,0 +1,106 @@
+.bannerBg {
+    height: 100vh;
+    width: 100%;
+    background-image: url("../../../public/Images/banner.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    padding-bottom: 49rem !important;
+    margin-bottom: 8rem;
+    @media (max-width:1011px) {
+        margin-bottom: 40vw !important;
+    }
+    @media (max-width:768px) {
+        margin-bottom: 360px !important;
+    }
+    @media (max-width:498px) {
+        margin-bottom: 460px !important;
+    }
+}
+
+.bgOverlay {
+    /* background: linear-gradient(151.1deg, rgba(9, 0, 140, 0.61) 41.28%, rgba(240, 54, 21, 0.1098) 92.5%); */
+    background: linear-gradient(160.1deg, rgba(9, 0, 140, 0.61) 42.28%, rgba(240, 54, 21, 0.1098) 89.5%);
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    background: linear-gradient(151.1deg, rgba(9, 0, 140, 0.61) 41.28%, rgba(240, 54, 21, 0.1098) 92.5%);
+    padding-bottom: 49rem !important;
+
+}
+
+.overrideContent {
+    z-index: 10;
+    position: relative;
+}
+
+
+.outlinedText {
+    font-size: 75px;
+    /* Adjust as needed */
+    font-weight: bold;
+    color: transparent;
+    -webkit-text-stroke: 1px white;
+    /* Outline */
+    text-transform: uppercase;
+
+    /* Converts text to uppercase */
+    @media (max-width:1200px) {
+        font-size: clamp(2rem, 10vw, 5rem);
+    }
+}
+
+.mainText {
+    @media (max-width:1200px) {
+        line-height: clamp(0.4rem, 10vw, 1.4rem) !important;
+        font-size: clamp(0.4rem, 10vw, 1rem) !important;
+    }
+}
+
+.rotateText {
+    transform: rotate(-90deg);
+    position: absolute;
+    left: -38px;
+    bottom: 35px;
+}
+
+.blurDetSection {
+    backdrop-filter: blur(11px);
+    border-top-right-radius: 50px;
+    background: #FFFFFF12; 
+}
+
+.rectangleBlurCard {
+    width: 103px;
+    height: 100px;
+    background: #FFFFFF12;
+    backdrop-filter: blur(11px);
+
+    border: 1px solid rgba(255, 255, 255, 0.26);
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0; 
+}
+
+
+.windowSecion{
+    display: flex;
+    @media (max-width: 907px) {
+        display: none !important;
+
+    }
+}
+
+.mobileSection{
+    display: none;
+    @media (max-width:907px) {
+        display: flex !important;
+    }
+}

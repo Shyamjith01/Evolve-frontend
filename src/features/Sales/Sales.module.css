@@ -1,0 +1,19 @@
+.raduisImg {
+    width: 100%;
+    border-radius: 20px;
+    object-fit: cover;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
+.textgradiant {
+    background: linear-gradient(180deg, #1BA0D9 0%, #001E68 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    /* For non-WebKit browsers supporting the property */
+    text-fill-color: transparent;
+    /* Optional for future-proofing */
+  }

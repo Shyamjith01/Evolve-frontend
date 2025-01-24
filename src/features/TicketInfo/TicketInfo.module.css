@@ -1,0 +1,208 @@
+/* .ticketBg {
+    background-image: url("../../../public/Images/ticketBg.webp");
+    height: auto;
+    position: relative;
+    @media (max-width:1074px) {
+        height: auto !important;
+    }
+} */
+.ticketBg {
+  background: linear-gradient(180deg, rgba(27, 160, 217, 0.7) 0%, rgba(0, 30, 104, 0.8) 100%),
+    url("../../../public/Images/ticketBg.webp");
+  background-size: cover;
+  /* Ensures the image covers the entire container */
+  background-position: start;
+  /* Centers the image */
+  background-repeat: no-repeat;
+  /* Ensures the image does not repeat */
+  height: auto;
+  height: 586px;
+
+  position: relative;
+
+  @media (max-width: 1074px) {
+    height: auto !important;
+  }
+}
+
+.ticketOverlay {
+  position: absolute;
+  width: 100%;
+  /* height: 586px; */
+  height: -webkit-fill-available;
+  opacity: 0.77;
+  top: 0;
+  background: linear-gradient(180deg, #1BA0D9 0%, #001E68 100%);
+
+  @media (max-width:1074px) {
+    height: auto !important;
+  }
+}
+
+.ticketContent {
+  /* position: absolute; */
+  width: 100%;
+  top: 0;
+}
+
+.paymentCard {
+  width: 100%;
+}
+
+
+.positionCenter {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+}
+
+.textgradiant {
+  background: linear-gradient(180deg, #1BA0D9 0%, #001E68 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  /* For non-WebKit browsers supporting the property */
+  text-fill-color: transparent;
+  /* Optional for future-proofing */
+}
+
+.payCard {
+  width: 100%;
+
+}
+
+
+.horizontalCenter {
+  left: 50%;
+  transform: translateX(-50%);
+  top: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+@media (max-width: 1024px) {
+  .gridContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .gridContainer {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  border-radius: 22px;
+  position: relative;
+  overflow: hidden;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  @media (max-width:762px) and (min-width:420px) {
+    border-radius: 48px !important;
+    -webkit-border-radius: 48px !important;
+    -moz-border-radius: 48px !important;
+    -ms-border-radius: 48px !important;
+    -o-border-radius: 48px !important;
+  }
+ 
+
+}
+
+.card {
+  @media (max-width: 1023px) and (min-width: 758px) {
+    border-radius: 30px !important;
+    -webkit-border-radius: 30px !important;
+    -moz-border-radius: 30px !important;
+    -ms-border-radius: 30px !important;
+    -o-border-radius: 30px !important;
+}
+}
+
+
+.cardImage {
+  width: 100%;
+  height: auto;
+}
+
+.content {
+  padding: 0px;
+}
+
+.textContainer {
+  text-align: center;
+}
+
+.textContainer h4 {
+  font-weight: 600;
+  font-size: 16px;
+  color: #000;
+  margin: 0;
+}
+
+.textContainer h2 {
+  font-weight: 700;
+  font-size: 35px;
+  color: #000;
+  margin: 8px 0;
+}
+
+.textContainer p {
+  font-weight: 700;
+  font-size: 16px;
+  color: #000;
+}
+
+.pointsList {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.pointsList li {
+  font-size: 14px;
+  color: #333;
+  margin: 5px 0;
+}
+
+.reserveSpot {
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 10px 0;
+  border-radius: 0 0 22px 22px;
+  cursor: pointer;
+}
