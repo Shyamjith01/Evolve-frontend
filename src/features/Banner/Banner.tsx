@@ -335,7 +335,7 @@ export default function Banner() {
         <div className={classes.bgOverlay}></div>
         <Container mt={85} className={classes.progressContainer} w={"100%"} size={1200}>
           <Grid justify="center" styles={{ inner: { height: "206px" } }} h={"206px"} w="100%">
-            <Grid.Col h={"100%"} span={{ md: 2.4, base: 12 }} className={classes.estimateContainer}>
+            <Grid.Col h={"100%"} span={{ md: 3, base: 12 }} className={classes.estimateContainer}>
               <EstimateCard
                 bg="#00AE71"
                 count="10,000+"
