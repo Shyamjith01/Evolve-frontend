@@ -14,6 +14,8 @@ import calendarWithStar from "../../../public/icons/calendarwithStar.png";
 import Image from "next/image";
 import Timeframe from "../../../public/icons/timeframe.png";
 import locationframe from "../../../public/icons/location.png";
+import { useEffect, useState } from "react";
+import { log } from "node:console";
 
 const EstimateCard = ({
   count,
@@ -33,8 +35,8 @@ const EstimateCard = ({
       h={"100%"}
       bg={bg}
     >
-      <Stack ta={"center"} justify="center" gap={4} align="center">
-        <Text c={"brand.0"} fw={700} fz={"35px"}>
+      <Stack ta={"center"} justify="center" className={classes.couterWrapp} gap={4} align="center">
+        <Text c={"brand.0"} fw={700} className={classes.countText} fz={"35px"}>
           {count}
         </Text>
         <Text
@@ -42,6 +44,7 @@ const EstimateCard = ({
           w={"60%"}
           c={"brand.0"}
           mt={-10}
+          ta={"center"}
           tt={"uppercase"}
           fw={600}
           fz={"16px"}
@@ -54,6 +57,39 @@ const EstimateCard = ({
 };
 
 export default function Banner() {
+
+  const [days, setDays] = useState(0);
+  const [hours, setHours] = useState(0);
+  const [minutes, setMinutes] = useState(0);
+  const [seconds, setSeconds] = useState(0);
+
+  const targetDate = new Date('2025-04-24T00:00:00'); // Set your target date here
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      const now = new Date();
+      const timeDifference = targetDate.getTime() - now.getTime();
+
+      if (timeDifference > 0) {
+        const secondsRemaining = Math.floor(timeDifference / 1000);
+        const minutesRemaining = Math.floor(secondsRemaining / 60);
+        const hoursRemaining = Math.floor(minutesRemaining / 60);
+        const daysRemaining = Math.floor(hoursRemaining / 24);
+
+        setDays(daysRemaining);
+        setHours(hoursRemaining % 24);
+        setMinutes(minutesRemaining % 60);
+        setSeconds(secondsRemaining % 60);
+      } else {
+        clearInterval(intervalId); // Stop the timer when the target date is reached
+      }
+    }, 1000); // Update every second
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+
+
   return (
     <Group>
       <div className={classes.bannerBg}>
@@ -208,7 +244,7 @@ export default function Banner() {
                         </Text>
                       </Flex>
                     </Flex>
-                    <Flex wrap={"wrap"} gap={15} mt={20}>
+                    <Flex className={classes.timeWrapDiv} gap={15} mt={20}>
                       <Flex
                         ta={"center"}
                         gap={0}
@@ -217,7 +253,7 @@ export default function Banner() {
                         className={classes.rectangleBlurCard}
                       >
                         <Text fz={"35px"} c={"brand.1"} mt={-10} fw={700}>
-                          25
+                          {days}
                         </Text>
                         <Text
                           fz={"16px"}
@@ -237,7 +273,7 @@ export default function Banner() {
                         className={classes.rectangleBlurCard}
                       >
                         <Text fz={"35px"} c={"brand.1"} mt={-10} fw={700}>
-                        20
+                        {hours}
                         </Text>
                         <Text
                           fz={"16px"}
@@ -257,7 +293,7 @@ export default function Banner() {
                         className={classes.rectangleBlurCard}
                       >
                         <Text fz={"35px"} c={"brand.1"} mt={-10} fw={700}>
-                        25
+                        {minutes}
                         </Text>
                         <Text
                           fz={"16px"}
@@ -277,7 +313,7 @@ export default function Banner() {
                         className={classes.rectangleBlurCard}
                       >
                         <Text fz={"35px"} c={"brand.1"} mt={-10} fw={700}>
-                        30
+                        {seconds}
                         </Text>
                         <Text
                           fz={"16px"}
@@ -297,9 +333,9 @@ export default function Banner() {
           </Container>
         </div>
         <div className={classes.bgOverlay}></div>
-        <Container mt={85} w={"100%"} size={1200}>
+        <Container mt={85} className={classes.progressContainer} w={"100%"} size={1200}>
           <Grid styles={{ inner: { height: "206px" } }} h={"206px"} w="100%">
-            <Grid.Col h={"100%"} span={{ md: 2.4, base: 12 }}>
+            <Grid.Col h={"100%"} span={{ md: 2.4, base: 12 }} className={classes.estimateContainer}>
               <EstimateCard
                 bg="#00AE71"
                 count="10,000+"
@@ -309,7 +345,7 @@ export default function Banner() {
             <Grid.Col span={{ md: 1.8, base: 6 }}>
               <EstimateCard
                 bg="#0066AE"
-                count="40+"
+                count="1"
                 description="Expert Speakers"
               />
             </Grid.Col>
@@ -330,8 +366,9 @@ export default function Banner() {
                       justify="center"
                       gap={4}
                       align="center"
+                      className={classes.couterWrapp}
                     >
-                      <Text c={"brand.0"} fw={700} fz={"35px"}>
+                      <Text className={classes.countText} c={"brand.0"} fw={700} fz={"35px"}>
                         100+
                       </Text>
                       <Text

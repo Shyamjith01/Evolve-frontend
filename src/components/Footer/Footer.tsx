@@ -14,7 +14,7 @@ import logo from "../../../public/icons/EvolveLogo.png";
 
 export default function Footer() {
   return (
-    <Group py={50} w={"100%"} bg={"#00425F"}>
+    <Group py={50} pb={20} w={"100%"} bg={"#00425F"}>
       <Container size={1200} w={"100%"}>
         <Grid w={"100%"}>
           <Grid.Col span={{md:3.5,sm:6,xs:12}}>
@@ -91,6 +91,9 @@ export default function Footer() {
         </Grid>
 
         <Divider color="#0D6287" my="md" />
+        <Flex w="100%" justify="center">
+          <Text c={"#FFFFFF"} fw={400} fz={"14px"}>© 2025 Brand Stories. All rights reserved.</Text>
+        </Flex>
       </Container>
     </Group>
   );

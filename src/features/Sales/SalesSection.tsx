@@ -17,14 +17,14 @@ export default function SalesSection() {
       </Text>
 
       <Grid w="100%" mt={15}>
-        <Grid.Col span={{ md: 4.5, base: 6 }}>
+        <Grid.Col span={{ md: 4.5, sm:6,xs:12 }}>
           <Image
             className={classes.raduisImg}
             src={salesImg1}
             alt="salesImg1"
           />
         </Grid.Col>
-        <Grid.Col span={{ md: 4.5, base: 6 }}>
+        <Grid.Col span={{ md: 4.5,  sm:6,xs:12}}>
           <Grid gutter={10} w={"100%"}>
             <Grid.Col span={12}>
               <Image
@@ -62,9 +62,10 @@ export default function SalesSection() {
                 alt="salesImg1"
               />
             </Grid.Col>
-            <Grid.Col span={{ md: 12, base: 6 }}>
+            <Grid.Col span={{ md: 12, base: 12 }}>
               <Image
-                className={classes.raduisImg}
+                quality={100}
+                className={`${classes.raduisImg} ${classes.lastImg}`}
                 src={salesImg6}
                 height={154}
                 alt="salesImg1"

@@ -108,11 +108,11 @@ export default function EventInfo() {
             </Flex>
           </Grid.Col>
           <Grid.Col ml={{md:-30,base:10}} span={{ md: 6, base: 12 }}>
-            <Stack gap={15}>
+            <Stack gap={9} className={classes.rightSec}>
               <Text tt={"uppercase"} fw={600} fz={16} c={"brand.3"}>
                 About
               </Text>
-              <Text tt={"uppercase"} fw={600} fz={35} c={"brand.2"}>
+              <Text mt={-9} tt={"uppercase"} fw={700} fz={35} c={"brand.2"}>
                 Mr. Shiv Khera
               </Text>
               <Text fw={600} fz={"16px"} c={"brand.4"}>
@@ -136,47 +136,7 @@ export default function EventInfo() {
               </Text>
             </Stack>
           </Grid.Col>
-        </Grid>
-
-        {/* <Container size={1200} w={"100%"} my={60}>
-          <Grid w="100%">
-            <Grid.Col span={{md:3.5,base:12}}>
-              <div className={classes.photoWithsmallBorder}>
-                <Image src={shivakeraImg} alt="photo" />
-              </div>
-            </Grid.Col>
-            <Grid.Col span={{md:7.5,base:12}}>
-              <Stack gap={15}>
-                <Text tt={"uppercase"} fw={600} fz={16} c={"brand.3"}>
-                  About
-                </Text>
-                <Text tt={"uppercase"} fw={600} fz={35} c={"brand.2"}>
-                  Mr. Shiv Khera
-                </Text>
-                <Text fw={600} fz={"16px"} c={"brand.4"}>
-                  Unlock Your True Potential with Shiv Khera!
-                </Text>
-                <Text fz={"16px"} fw={400} c={"brand.4"} lh={"30px"}>
-                  Renowned International Motivational Speaker, Author, and
-                  Leadership Coach <br /> Author of the Best-Seller: You Can Win{" "}
-                  <br /> Over 25+ years of experience inspiring individuals and
-                  organizations worldwide Trained millions of professionals{" "}
-                  <br />
-                  across 20+ countries Trusted advisor to Fortune 500 companies
-                </Text>
-                <Text
-                  className={classes.textgradiant}
-                  fz={"16px"}
-                  fw={600}
-                  c={"brand.4"}
-                  lh={"30px"}
-                >
-                  Join Us for an Exclusive One Day Training Session
-                </Text>
-              </Stack>
-            </Grid.Col>
-          </Grid>
-        </Container> */}
+        </Grid> 
       </Group>
     </>
   );

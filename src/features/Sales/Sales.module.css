@@ -17,3 +17,9 @@
     text-fill-color: transparent;
     /* Optional for future-proofing */
   }
+
+  .lastImg{
+    @media (max-width:640px) {
+        height: 254px;
+    }
+  }

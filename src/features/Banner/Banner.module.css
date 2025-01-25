@@ -8,13 +8,17 @@
     padding-bottom: 49rem !important;
     margin-bottom: 8rem;
     @media (max-width:1011px) {
-        margin-bottom: 40vw !important;
+        margin-bottom: 31vw !important;
     }
     @media (max-width:768px) {
-        margin-bottom: 360px !important;
+        margin-bottom: 270px !important;
     }
     @media (max-width:498px) {
-        margin-bottom: 460px !important;
+        margin-bottom: 222px  !important;
+    }
+    @media (max-width:640px) and (min-width:450px) {
+        margin-bottom: 165px  !important;
+        
     }
 }
 
@@ -87,6 +91,48 @@
     display: flex;
     flex-direction: column;
     gap: 0; 
+    @media (max-width:640px) {
+        width: 20vw;
+        height: 80px;
+    }
+    @media (max-width:350px) {
+        height: 60px !important;
+        gap: 4px !important;
+        padding-top: 5px;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+}
+
+}
+
+.timeWrapDiv{
+    @media (max-width:520px) {
+        justify-content: space-between !important; 
+    } 
+
+}
+
+.rectangleBlurCard p:nth-of-type(1) {
+    @media (max-width:640px) and (min-width:350px) {
+        font-size: clamp(0.4rem, 10vw, 1.4rem) !important;
+    }
+    @media (max-width:360px) {
+        font-size: clamp(0.4rem, 10vw, 1.2rem) !important;
+
+    }
+
+}
+
+.rectangleBlurCard p:nth-of-type(2) {
+    @media (max-width:640px) and (min-width:350px) {
+        font-size: clamp(0.4rem, 10vw, 1rem) !important;
+    }
+    @media (max-width:360px) {
+        font-size: clamp(0.4rem, 10vw, 0.6rem) !important;
+    }
 }
 
 
@@ -102,5 +148,37 @@
     display: none;
     @media (max-width:907px) {
         display: flex !important;
+    }
+}
+
+
+.countText{
+    @media (max-width:640px) {
+        font-size: clamp(0.4rem, 10vw, 1rem) !important;
+    }
+}
+
+.couterWrapp{
+    @media (max-width:640px) {
+        gap: 10px !important;
+    }
+}
+
+.couterWrapp p:nth-of-type(2){
+    @media (max-width:640px) {
+        font-size: clamp(0.4rem, 10vw, 0.8rem) !important;
+    }
+}
+
+
+.progressContainer{
+    @media (max-width:640px) { 
+        margin-top: 35px !important;
+    }
+}
+
+.estimateContainer{
+    @media (max-width:640px) { 
+
     }
 }
