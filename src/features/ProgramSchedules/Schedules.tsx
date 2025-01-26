@@ -46,8 +46,8 @@ const ScheduledItem = ({
         <Text
           display={{ md: "flex", base: "content" }}
           c={"brand.4"}
-          fw={400}
-          fz={"16px"}
+          fw={600}
+          fz={"18px"}
         >
           <span
             style={{

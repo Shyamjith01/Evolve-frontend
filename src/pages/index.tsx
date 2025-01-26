@@ -10,6 +10,7 @@ import TicketInfo from "@/features/TicketInfo/TicketInfo";
 import About from "@/features/About/About";
 import SalesSection from "@/features/Sales/SalesSection";
 import Footer from "@/components/Footer/Footer";
+import 'react-phone-input-2/lib/style.css'
  
 
 export default function Home() {

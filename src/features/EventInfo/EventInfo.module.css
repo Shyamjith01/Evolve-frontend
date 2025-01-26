@@ -160,3 +160,31 @@
     padding: 25px 18px;
   }
 }
+
+.roundedIcon {
+  animation: moveLeft 3s ease-in-out infinite;
+  position: relative;
+}
+
+.roundedIconBg {
+  animation: moveRight 3s ease-in-out infinite;
+  position: relative;
+}
+
+@keyframes moveLeft {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-10px); /* Moves left */
+  }
+}
+
+@keyframes moveRight {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(10px); /* Moves right */
+  }
+}

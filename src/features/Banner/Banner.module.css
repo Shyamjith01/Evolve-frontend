@@ -156,6 +156,9 @@
     @media (max-width:640px) {
         font-size: clamp(0.4rem, 10vw, 1rem) !important;
     }
+    display: flex;
+    align-items: center;
+    gap:4px;
 }
 
 .couterWrapp{

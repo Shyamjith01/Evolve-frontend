@@ -16,13 +16,14 @@ import Timeframe from "../../../public/icons/timeframe.png";
 import locationframe from "../../../public/icons/location.png";
 import { useEffect, useState } from "react";
 import { log } from "node:console";
+import CountUp from "react-countup";
 
 const EstimateCard = ({
   count,
   description,
   bg,
 }: {
-  count: string;
+  count: number | null;
   description: string;
   bg: string;
 }) => {
@@ -35,10 +36,24 @@ const EstimateCard = ({
       h={"100%"}
       bg={bg}
     >
-      <Stack ta={"center"} justify="center" className={classes.couterWrapp} gap={4} align="center">
-        <Text c={"brand.0"} fw={700} className={classes.countText} fz={"35px"}>
-          {count}
-        </Text>
+      <Stack
+        ta={"center"}
+        justify="center"
+        className={classes.couterWrapp}
+        gap={4}
+        align="center"
+      >
+        {count && (
+          <Text
+            c={"brand.0"}
+            fw={700}
+            className={classes.countText}
+            fz={"35px"}
+          >
+            <CountUp end={count} duration={4} /> {count > 1 && "+"}
+          </Text>
+        )}
+
         <Text
           lh={"18px"}
           w={"60%"}
@@ -57,13 +72,12 @@ const EstimateCard = ({
 };
 
 export default function Banner() {
-
   const [days, setDays] = useState(0);
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
 
-  const targetDate = new Date('2025-04-24T00:00:00'); // Set your target date here
+  const targetDate = new Date("2025-04-24T00:00:00"); // Set your target date here
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -88,8 +102,6 @@ export default function Banner() {
     return () => clearInterval(intervalId);
   }, []);
 
-
-
   return (
     <Group>
       <div className={classes.bannerBg}>
@@ -113,7 +125,12 @@ export default function Banner() {
                       Inject New Vitality into Your Organizational Culture Based
                       on Values & Ethics
                     </Text>
-                    <Flex className={classes.windowSecion} mt={10} h={"6rem"} pos={"relative"}>
+                    <Flex
+                      className={classes.windowSecion}
+                      mt={10}
+                      h={"6rem"}
+                      pos={"relative"}
+                    >
                       <Text
                         tt="uppercase"
                         fz="14px"
@@ -192,8 +209,14 @@ export default function Banner() {
                         </Flex>
                       </Group>
                     </Flex>
-                    <Flex className={classes.mobileSection} mt={20} align={"center"} gap={15} wrap={"wrap"}>
-                      <Flex   gap={9} align={"center"}>
+                    <Flex
+                      className={classes.mobileSection}
+                      mt={20}
+                      align={"center"}
+                      gap={15}
+                      wrap={"wrap"}
+                    >
+                      <Flex gap={9} align={"center"}>
                         <Image src={calendarWithStar} alt="calendar" />
                         <Stack gap={2}>
                           <Text
@@ -273,7 +296,7 @@ export default function Banner() {
                         className={classes.rectangleBlurCard}
                       >
                         <Text fz={"35px"} c={"brand.1"} mt={-10} fw={700}>
-                        {hours}
+                          {hours}
                         </Text>
                         <Text
                           fz={"16px"}
@@ -293,7 +316,7 @@ export default function Banner() {
                         className={classes.rectangleBlurCard}
                       >
                         <Text fz={"35px"} c={"brand.1"} mt={-10} fw={700}>
-                        {minutes}
+                          {minutes}
                         </Text>
                         <Text
                           fz={"16px"}
@@ -313,7 +336,7 @@ export default function Banner() {
                         className={classes.rectangleBlurCard}
                       >
                         <Text fz={"35px"} c={"brand.1"} mt={-10} fw={700}>
-                        {seconds}
+                          {seconds}
                         </Text>
                         <Text
                           fz={"16px"}
@@ -333,20 +356,34 @@ export default function Banner() {
           </Container>
         </div>
         <div className={classes.bgOverlay}></div>
-        <Container mt={85} className={classes.progressContainer} w={"100%"} size={1200}>
-          <Grid justify="center" styles={{ inner: { height: "206px" } }} h={"206px"} w="100%">
-            <Grid.Col h={"100%"} span={{ md: 3, base: 12 }} className={classes.estimateContainer}>
+        <Container
+          mt={85}
+          className={classes.progressContainer}
+          w={"100%"}
+          size={1200}
+        >
+          <Grid
+            justify="center"
+            styles={{ inner: { height: "206px" } }}
+            h={"206px"}
+            w="100%"
+          >
+            <Grid.Col
+              h={"100%"}
+              span={{ md: 3, base: 12 }}
+              className={classes.estimateContainer}
+            >
               <EstimateCard
                 bg="#00AE71"
-                count="10,000+"
+                count={1000}
                 description="Attendees"
               />
             </Grid.Col>
             <Grid.Col span={{ md: 1.8, base: 6 }}>
               <EstimateCard
                 bg="#0066AE"
-                count="1"
-                description="Expert Speakers"
+                count={1}
+                description="Expert Speaker"
               />
             </Grid.Col>
             <Grid.Col span={{ md: 2.4, base: 6 }}>
@@ -368,8 +405,13 @@ export default function Banner() {
                       align="center"
                       className={classes.couterWrapp}
                     >
-                      <Text className={classes.countText} c={"brand.0"} fw={700} fz={"35px"}>
-                        100+
+                      <Text
+                        className={classes.countText}
+                        c={"brand.0"}
+                        fw={700}
+                        fz={"35px"}
+                      >
+                        <CountUp end={100} duration={4} />+
                       </Text>
                       <Text
                         lh={"18px"}
@@ -386,22 +428,22 @@ export default function Banner() {
                   </Card>
                 </Grid.Col>
                 <Grid.Col span={12} h={"70px"}>
-                  <EstimateCard bg="#CFD762" count="" description="" />
+                  <EstimateCard bg="#CFD762" count={null} description="" />
                 </Grid.Col>
               </Grid>
             </Grid.Col>
             <Grid.Col span={{ md: 2.4, base: 6 }}>
               <EstimateCard
                 bg="#911AEC"
-                count="500+"
+                count={500}
                 description="HNIs & Family Offices"
               />
             </Grid.Col>
             <Grid.Col span={{ md: 2.4, base: 6 }}>
               <EstimateCard
                 bg="#FF8B07"
-                count="25+"
-                description="Competitive Startups Pitching"
+                count={25}
+                description="Networking and learning"
               />
             </Grid.Col>
           </Grid>

@@ -1,6 +1,6 @@
 .gridContainer {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     width: 90%;
     margin: 40px auto;
@@ -19,6 +19,7 @@
     display: flex;
     height: max-content;
     flex-direction: column;
+    cursor: pointer;
 }
 
 .imageContainer {
@@ -70,4 +71,17 @@
     font-weight: 600;
     color: #000;
     margin: 0;
+}
+
+.responsiveText{
+    @media (max-width:640px) {
+        font-size: 10px !important;      
+        line-height: 12px !important;  
+    }
+}
+
+.responsivesmallText{
+    @media (max-width:640px) {
+        font-size: 12px;
+    }
 }

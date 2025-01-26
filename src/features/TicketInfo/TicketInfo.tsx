@@ -1,4 +1,17 @@
-import { Container, Flex, Grid, Group, List, Stack, Text } from "@mantine/core";
+import {
+  Button,
+  Card,
+  Checkbox,
+  Container,
+  Flex,
+  Grid,
+  Group,
+  List,
+  Modal,
+  Stack,
+  Text,
+  TextInput,
+} from "@mantine/core";
 import classes from "./TicketInfo.module.css";
 import paymentCard from "../../../public/Images/paymentCard.png";
 import Image from "next/image";
@@ -11,6 +24,9 @@ import silverCard from "../../../public/icons/silverCard.png";
 
 import { IconCheck } from "@tabler/icons-react";
 import ResponsiveGrid from "./ResponsiveGrid";
+import { useDisclosure } from "@mantine/hooks";
+import { useForm } from "@mantine/form";
+import PhoneInput from "react-phone-input-2";
 
 const sponsorships = [
   {
@@ -95,6 +111,20 @@ const Points = ({ points }: { points: string[] }) => {
 };
 
 export default function TicketInfo() {
+  const [opened, { open, close }] = useDisclosure(false);
+
+  const form = useForm({
+    mode: "uncontrolled",
+    initialValues: {
+      email: "",
+      termsOfService: false,
+    },
+
+    validate: {
+      email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
+    },
+  });
+
   return (
     <Group
       mb={{ md: "15rem", base: "3rem" }}
@@ -109,232 +139,7 @@ export default function TicketInfo() {
               Ticket Information
             </Text>
           </Flex>
-          {/* <Grid w="90%" align="center" mt={40} ml={"auto"} mr={"auto"}>
-            <Grid.Col pos={"relative"} span={{ md: 6, base: 12 }}>
-              <Image
-                className={classes.paymentCard}
-                src={paymentCard}
-                alt="payment"
-              />
-              <Grid className={classes.positionCenter} w="100%">
-                <Grid.Col span={4.5}>
-                  <Flex
-                    align={"center"}
-                    w="100%"
-                    direction={"column"}
-                    justify={"center"}
-                    gap={1}
-                  >
-                    <Text
-                      lh={"23px"}
-                      tt={"uppercase"}
-                      ta={"center"}
-                      fz={{md:"18px",sm:"25px",xs:"20px"}}
-                      fw={600}
-                      className={classes.textgradiant}
-                    >
-                      Standard <br />
-                      Ticket
-                    </Text>
-                    <Text
-                      mt={-4}
-                      tt={"uppercase"}
-                      ta={"center"}
-                      fz={{md:"35px",sm:"25px",xs:"20px"}}
-                      fw={700}
-                      className={classes.textgradiant}
-                    >
-                      ₹6,000
-                    </Text>
-                  </Flex>
-                </Grid.Col>
-                <Grid.Col span={6.5}>
-                  <Text
-                    tt={"uppercase"}
-                    ta={"start"}
-                    fz={"16px"}
-                    fw={600}
-                    className={classes.textgradiant}
-                  >
-                    General admission to all sessions and networking.
-                  </Text>
-                </Grid.Col>
-              </Grid>
-            </Grid.Col>
-            <Grid.Col pos={"relative"} span={{ md: 6, base: 12 }}>
-              <Image
-                className={classes.paymentCard}
-                src={paymentCard}
-                alt="payment"
-              />
-              <Grid className={classes.positionCenter} w="100%">
-                <Grid.Col span={4.5}>
-                  <Flex
-                    align={"center"}
-                    w="100%"
-                    direction={"column"}
-                    justify={"center"}
-                    gap={1}
-                  >
-                    <Text
-                      lh={"23px"}
-                      tt={"uppercase"}
-                      ta={"center"}
-                      fz={{md:"18px",sm:"25px",xs:"20px"}}
-                      fw={600}
-                      className={classes.textgradiant}
-                    >
-                      Standard <br />
-                      Ticket
-                    </Text>
-                    <Text
-                      mt={-4}
-                      tt={"uppercase"}
-                      ta={"center"}
-                      fz={{md:"35px",sm:"25px",xs:"20px"}}
-                      fw={700}
-                      className={classes.textgradiant}
-                    >
-                      ₹5,000
-                    </Text>
-                  </Flex>
-                </Grid.Col>
-                <Grid.Col span={6.5}>
-                  <Text
-                    tt={"uppercase"}
-                    ta={"start"}
-                    fz={"16px"}
-                    fw={600}
-                    className={classes.textgradiant}
-                  >
-                    Available until 31st March 2025. Don’t miss the chance to
-                    save!
-                  </Text>
-                </Grid.Col>
-              </Grid>
-            </Grid.Col>
-          </Grid> */}
 
-          {/* <Grid w="90%"   align="center" mt={40} ml={"auto"} mr={"auto"}>
-            <Grid.Col
-              bg={"#FFFFFF"}
-              p={0}
-              style={{ borderRadius: "10px",overflow:"hidden" }}
-              pos={"relative"}
-              span={{ md: 6, base: 12 }}
-            >
-              <Grid w="100%" p={0}>
-                <Grid.Col span={4} p={0} pt={7} pos={"relative"}>
-                  <Flex
-                    align={"center"}
-                    w="100%"
-                    direction={"column"}
-                    justify={"center"}
-                    gap={1}
-                    pos={"absolute"}
-                    style={{ top: "50% ", transform: "translateY(-50%)" }}
-                  >
-                    <Text
-                      lh={"23px"}
-                      tt={"uppercase"}
-                      ta={"center"}
-                      fz={{ md: "18px", sm: "25px", xs: "20px" }}
-                      fw={600}
-                      c={"#000000"}
-                    >
-                      Standard <br />
-                      Ticket
-                    </Text>
-                    <Text
-                      mt={-4}
-                      tt={"uppercase"}
-                      ta={"center"}
-                      fz={{ md: "35px", sm: "25px", xs: "20px" }}
-                      fw={700}
-                      c={"#000000"}
-                    >
-                      ₹5,000
-                    </Text>
-                  </Flex>
-                  <Image
-                    src={golderCard}
-                    style={{ objectFit: "cover", height: "100%" }}
-                    alt="golderCard"
-                  />
-                </Grid.Col>
-                <Grid.Col span={8}>
-                  <Text
-                    tt={"uppercase"}
-                    ta={"start"}
-                    fz={"16px"}
-                    fw={600}
-                    w={"95%"}
-                    c={"#000000"}
-                    ml={15}
-                  >
-                    Available until 31st March 2025. Don’t miss the chance to
-                    save!
-                  </Text>
-                </Grid.Col>
-              </Grid>
-            </Grid.Col>
-            <Grid.Col bg={"#FFFFFF"} p={0} style={{ borderRadius: "10px",overflow:"hidden" }} pos={"relative"}  span={{ md: 6, base: 12 }}>
-              <Grid w="100%" p={0}>
-                <Grid.Col span={4} p={0} pt={7} pos={"relative"}>
-                  <Flex
-                    align={"center"}
-                    w="100%"
-                    direction={"column"}
-                    justify={"center"}
-                    gap={1}
-                    pos={"absolute"}
-                    style={{ top: "50% ", transform: "translateY(-50%)" }}
-                  >
-                    <Text
-                      lh={"23px"}
-                      tt={"uppercase"}
-                      ta={"center"}
-                      fz={{ md: "18px", sm: "25px", xs: "20px" }}
-                      fw={600}
-                      c={"#000000"}
-                    >
-                      Standard <br />
-                      Ticket
-                    </Text>
-                    <Text
-                      mt={-4}
-                      tt={"uppercase"}
-                      ta={"center"}
-                      fz={{ md: "35px", sm: "25px", xs: "20px" }}
-                      fw={700}
-                      c={"#000000"}
-                    >
-                      ₹5,000
-                    </Text>
-                  </Flex>
-                  <Image
-                    src={golderCard}
-                    style={{ objectFit: "cover", height: "100%" }}
-                    alt="golderCard"
-                  />
-                </Grid.Col>
-                <Grid.Col span={8}>
-                  <Text
-                    tt={"uppercase"}
-                    ta={"start"}
-                    fz={"16px"}
-                    fw={600}
-                    w={"95%"}
-                    c={"#000000"}
-                    ml={15}
-                  >
-                    Available until 31st March 2025. Don’t miss the chance to
-                    save!
-                  </Text>
-                </Grid.Col>
-              </Grid>
-            </Grid.Col>
-          </Grid> */}
           <ResponsiveGrid />
 
           <Flex mb={50} direction={"column"} w={"100%"} mt={40}>
@@ -368,15 +173,16 @@ export default function TicketInfo() {
                       className={classes.horizontalCenter}
                       pos={"absolute"}
                       top={15}
+                      w={"100%"}
                     >
                       <Text fw={600} fz="16px" c={"brand.0"}>
-                        Title Sponsor
+                        {item.title}
                       </Text>
                       <Text fw={700} fz="35px" mt={-8} c={"brand.0"}>
-                        ₹3,50,000
+                        {item.price}
                       </Text>
                       <Text fw={700} fz="16px" mt={-8} c={"brand.0"}>
-                        + 18% GST
+                        {item.gst}
                       </Text>
                     </Stack>
                     <Points points={item.points} />
@@ -392,7 +198,7 @@ export default function TicketInfo() {
             </div>
           </Flex>
         </Container>
-      </Group>
+      </Group> 
     </Group>
   );
 }
