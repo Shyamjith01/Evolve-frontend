@@ -153,7 +153,7 @@ const ResponsiveGrid = () => {
             key={card.id}
           >
             <Grid w="100%" p={0} pb={4.5}>
-              <Grid.Col span={4} p={0} pl={7} pt={4} pos="relative">
+              <Grid.Col span={4.5} p={0} pl={7} pt={4} pos="relative">
                 <Flex
                   align="center"
                   w="100%"
@@ -210,7 +210,7 @@ const ResponsiveGrid = () => {
                   alt={`${card.title} image`}
                 />
               </Grid.Col>
-              <Grid.Col  span={8}>
+              <Grid.Col  span={7.5}>
                 <Flex h="100%" align="center">
                   <Text
                     tt="uppercase"
@@ -219,7 +219,7 @@ const ResponsiveGrid = () => {
                     fw={600}
                     w="95%"
                     c="#000000"
-                    ml={{ md: 2, base: 2 }} 
+                    ml={{ md: 0, base: 2 }} 
                   >
                     {card.description}
                   </Text>
@@ -365,14 +365,7 @@ const ResponsiveGrid = () => {
                   inputClass={classes.phoneInputClass}
                   country="in"
                   containerClass={classes.phoneContainerClass}
-                  containerStyle={
-                    form.errors.phone
-                      ? {
-                          border: "1px solid red",
-                          overflow: "hidden",
-                        }
-                      : {}
-                  }
+                  
                   {...form.getInputProps("phone")}
                   dropdownClass={classes.dropdownClass}
                   buttonClass={classes.countryBtnClass}
