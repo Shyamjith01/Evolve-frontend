@@ -43,18 +43,17 @@ export default function EventInfo() {
                 <Text tt={"uppercase"} fw={700} fz={"35px"} c={"brand.1"}>
                   The event
                 </Text>
-                <Text
-                  tt={"uppercase"}
+                <Text 
                   fw={400}
                   fz={"16px"}
                   lh={"27px"}
                   c={"brand.1"}
                 >
-                  EVOLVE 2025 is a transformative one-day event crafted to
+                  <strong>EVOLVE 2025</strong> is a transformative one-day event crafted to
                   inspire professionals and organizations to embrace a
                   leadership mindset grounded in trust, ethics, and values,
                   fostering an environment of growth and innovation. Featuring
-                  globally acclaimed motivational speaker *Mr. Shiv Khera, this
+                  globally acclaimed motivational speaker Mr. Shiv Khera, this
                   event delivers a powerful blend of insights, tools, and
                   actionable strategies to drive personal and organizational
                   success. Attendees will explore key principles of leadership
@@ -62,7 +61,7 @@ export default function EventInfo() {
                   progress, gaining the clarity and confidence needed to
                   navigate challenges and create meaningful impact in their
                   workspaces. With its engaging sessions and thought-provoking
-                  content, **EVOLVE 2025* serves as a catalyst for unlocking
+                  content, <strong>EVOLVE 2025</strong> serves as a catalyst for unlocking
                   potential, building strong teams, and shaping a future defined
                   by purpose and excellence.
                 </Text>
