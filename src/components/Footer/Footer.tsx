@@ -18,6 +18,8 @@ import {
 } from "@tabler/icons-react";
 import Image from "next/image";
 import logo from "../../../public/icons/EvolveLogo.png";
+import classes from "./Footer.module.css"
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -82,14 +84,13 @@ export default function Footer() {
               <Stack>
                 <Flex gap={8}>
                   <IconPhone color="#FFFFFF" />
-                  <Text fw={600} fz={"16px"} c={"#FFFFFF"}>
-                    +91 9995185190, 8848085572
-                  </Text>
+                  <Flex c={"#ffff"} gap={2}><Link className={classes.phoneNumberText} href="tel:+91 9995185190">+91 9995185190</Link>,<Link className={classes.phoneNumberText} href={"tel:8848085572"}> 8848085572</Link></Flex>
+
                 </Flex>
                 <Flex gap={8}>
                   <IconMail color="#FFFFFF" />
                   <Text fw={600} fz={"16px"} c={"#FFFFFF"}>
-                    info@thebrandstories.co.in
+                    <Link className={classes.phoneNumberText} href={"mailto:info@thebrandstories.co.in"}>info@thebrandstories.co.in</Link>
                   </Text>
                 </Flex>
               </Stack>

@@ -134,7 +134,7 @@ export function Header() {
           <Group mt={20}>
             <Image width={matches ? 100 : 130} src={logo} alt="logo" />
           </Group>
-          <Group mt={15} h="100%" gap={0} visibleFrom="sm">
+          <Group  mt={15} h="100%" gap={0} visibleFrom="sm">
             <Links />
           </Group>
           <Burger

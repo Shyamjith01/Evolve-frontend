@@ -11,9 +11,9 @@ import personImg3 from "../../../public/Images/person3.webp";
 export default function EventInfo() {
   return (
     <>
-      <Group bg={"brand.2"} h={"auto"}>
+      <Group  bg={"brand.2"} h={"auto"}>
         <Container size={1200} w={"100%"} my={50}>
-          <Grid align="center" mt={"auto"} mb={"auto"} w={"100%"}>
+          <Grid align="center" mb={"auto"} w={"100%"}>
             <Grid.Col span={{ md: 4.3, base: 12 }}>
               <Flex w="100%" justify={"start"}>
                 <div className={classes.roundedImg}>
@@ -36,7 +36,7 @@ export default function EventInfo() {
               </Flex>
             </Grid.Col>
             <Grid.Col span={{ md: 7, base: 12 }}>
-              <Stack gap={5}>
+              <Stack gap={1}>
                 <Text tt={"uppercase"} fw={600} fz={16} c={"brand.1"}>
                   About
                 </Text>
@@ -47,23 +47,31 @@ export default function EventInfo() {
                   tt={"uppercase"}
                   fw={400}
                   fz={"16px"}
-                  lh={"30px"}
+                  lh={"27px"}
                   c={"brand.1"}
                 >
-                  EVOLVE 2025 is an exclusive one-day event designed to inspire
-                  professionals and organizations to adopt a strong leadership
-                  mindset, create a culture of trust, and inject vitality into
-                  their work environments through values and ethics. Guided by
-                  globally renowned motivational speaker Mr. Shiv Khera, this
-                  event will provide you with practical tools and strategies for
-                  personal and organizational growth.
+                  EVOLVE 2025 is a transformative one-day event crafted to
+                  inspire professionals and organizations to embrace a
+                  leadership mindset grounded in trust, ethics, and values,
+                  fostering an environment of growth and innovation. Featuring
+                  globally acclaimed motivational speaker *Mr. Shiv Khera, this
+                  event delivers a powerful blend of insights, tools, and
+                  actionable strategies to drive personal and organizational
+                  success. Attendees will explore key principles of leadership
+                  development, effective collaboration, and sustainable
+                  progress, gaining the clarity and confidence needed to
+                  navigate challenges and create meaningful impact in their
+                  workspaces. With its engaging sessions and thought-provoking
+                  content, **EVOLVE 2025* serves as a catalyst for unlocking
+                  potential, building strong teams, and shaping a future defined
+                  by purpose and excellence.
                 </Text>
               </Stack>
             </Grid.Col>
           </Grid>
         </Container>
       </Group>
-      <Group h={"auto"} mih={"2rem"} py={50}>
+      <Group style={{overflow:"hidden"}} h={"auto"} mih={"2rem"} py={50}>
         <Grid w={"100%"} align="center">
           <Grid.Col pos={"relative"} span={{ md: 6, base: 12 }}>
             <Card className={classes.leftSecEmptyCard}></Card>
@@ -71,7 +79,7 @@ export default function EventInfo() {
               <Text
                 opacity={0.4}
                 fw={700}
-                fz={{md:"52px",base:"45px"}}
+                fz={{ md: "52px", base: "45px" }}
                 c={"#FFFFFF"}
                 tt={"uppercase"}
                 className={classes.rotateText}
@@ -107,7 +115,7 @@ export default function EventInfo() {
               </Grid>
             </Flex>
           </Grid.Col>
-          <Grid.Col ml={{md:-30,base:10}} span={{ md: 6, base: 12 }}>
+          <Grid.Col ml={{ md: -30, base: 10 }} span={{ md: 6, base: 12 }}>
             <Stack gap={9} className={classes.rightSec}>
               <Text tt={"uppercase"} fw={600} fz={16} c={"brand.3"}>
                 About
@@ -118,12 +126,22 @@ export default function EventInfo() {
               <Text fw={600} fz={"16px"} c={"brand.4"}>
                 Unlock Your True Potential with Shiv Khera!
               </Text>
-              <Text fz={"16px"} fw={400} c={"brand.4"} lh={"30px"}>
-                Renowned International Motivational Speaker, Author, and
-                Leadership Coach <br /> Author of the Best-Seller: You Can Win{" "}
-                <br /> Over 25+ years of experience inspiring individuals and
-                organizations worldwide Trained millions of professionals <br />
-                across 20+ countries Trusted advisor to Fortune 500 companies
+              <Text fz={"16px"} fw={400} w={"94%"} c={"brand.4"} lh={"27px"}>
+                Mr. Shiv Khera is a globally renowned motivational speaker,
+                best-selling author, and trusted leadership coach, dedicated to
+                empowering individuals and organizations to achieve their
+                highest potential. Known for his best-seller, "You Can Win," he
+                has inspired millions through his thought-provoking insights and
+                practical approach to personal and professional growth. With
+                over 25 years of experience, Mr. Khera has trained professionals
+                across diverse industries in more than 20 countries,
+                transforming lives and creating impactful leaders. His expertise
+                is sought after by Fortune 500 companies as a trusted advisor,
+                offering strategies to enhance productivity, foster innovation,
+                and build ethical, high-performing teams. Join Mr. Shiv Khera
+                for an exclusive one-day training session and discover tools and
+                techniques to unlock your potential, overcome challenges, and
+                create meaningful success.
               </Text>
               <Text
                 className={classes.textgradiant}
@@ -136,7 +154,7 @@ export default function EventInfo() {
               </Text>
             </Stack>
           </Grid.Col>
-        </Grid> 
+        </Grid>
       </Group>
     </>
   );

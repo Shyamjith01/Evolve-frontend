@@ -11,6 +11,7 @@ import About from "@/features/About/About";
 import SalesSection from "@/features/Sales/SalesSection";
 import Footer from "@/components/Footer/Footer";
 import 'react-phone-input-2/lib/style.css'
+import '@mantine/carousel/styles.css';
  
 
 export default function Home() {

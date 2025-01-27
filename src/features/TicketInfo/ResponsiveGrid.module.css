@@ -17,7 +17,8 @@
     border-radius: 10px;
     overflow: hidden;
     display: flex;
-    height: max-content;
+    height: max-content; 
+
     flex-direction: column;
     cursor: pointer;
 }

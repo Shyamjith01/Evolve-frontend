@@ -33,7 +33,7 @@ interface CardData {
   discount: boolean;
   count: number;
   corporate?: boolean;
-  totalPrice:number
+  totalPrice: number;
 }
 
 const ResponsiveGrid = () => {
@@ -92,12 +92,16 @@ const ResponsiveGrid = () => {
   const form = useForm({
     mode: "uncontrolled",
     initialValues: {
+      name: "",
       email: "",
+      phone: "",
       termsOfService: false,
     },
 
     validate: {
       email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
+      name: (value) => (value.length > 0 ? null : "Name is required"),
+      phone: (value) => (value.length > 0 ? null : "Phone number is required"),
     },
   });
 
@@ -105,57 +109,51 @@ const ResponsiveGrid = () => {
     console.log(data, "datadata");
     setSelectedTicket({
       ...data,
-      totalPrice:data.count * data.price
+      totalPrice: data.count * data.price,
     });
     open();
   };
 
- 
-
-  console.log(selectedTicket?.count,"selectedTicketcc")
+  console.log(selectedTicket?.count, "selectedTicketcc");
   const handleCounter = (type: string) => {
     if (!selectedTicket || selectedTicket.id === undefined) return;
-  
+
     const basePrice = selectedTicket.price;
-  
+
     if (type === "add") {
       setSelectedTicket({
-        ...selectedTicket, 
+        ...selectedTicket,
         count: (selectedTicket.count || 0) + 1,
-        totalPrice: basePrice * ((selectedTicket.count || 0) + 1)
+        totalPrice: basePrice * ((selectedTicket.count || 0) + 1),
       });
     } else {
       if (selectedTicket.count && selectedTicket.count > 1) {
         setSelectedTicket({
-          ...selectedTicket, 
+          ...selectedTicket,
           count: selectedTicket.count - 1,
-          totalPrice: basePrice * (selectedTicket.count - 1)
+          totalPrice: basePrice * (selectedTicket.count - 1),
         });
       } else if (selectedTicket.count === 1) {
-        // If count is 1 and user wants to remove, reset to initial state
         setSelectedTicket({
-          ...selectedTicket, 
+          ...selectedTicket,
           count: 1,
-          totalPrice: basePrice
+          totalPrice: basePrice,
         });
       }
     }
   };
-  
-  
 
   return (
     <div className={styles.gridContainer}>
       <>
-        {cardData.map((card,i) => (
+        {cardData.map((card, i) => (
           <div
             onClick={() => i !== 2 && handleTicketSelect(card)}
             className={styles.card}
             key={card.id}
           >
-            <Grid w="100%" p={0}>
-              {/* Image and Title Section */}
-              <Grid.Col span={4} p={0} pt={4} pos="relative">
+            <Grid w="100%" p={0} pb={4.5}>
+              <Grid.Col span={4} p={0} pl={7} pt={4} pos="relative">
                 <Flex
                   align="center"
                   w="100%"
@@ -207,13 +205,12 @@ const ResponsiveGrid = () => {
                   style={{
                     objectFit: "contain",
                     height: "100%",
-                    width: "100%",
+                    width: "100%"
                   }}
                   alt={`${card.title} image`}
                 />
               </Grid.Col>
-              {/* Description Section */}
-              <Grid.Col span={8}>
+              <Grid.Col  span={8}>
                 <Flex h="100%" align="center">
                   <Text
                     tt="uppercase"
@@ -222,7 +219,7 @@ const ResponsiveGrid = () => {
                     fw={600}
                     w="95%"
                     c="#000000"
-                    ml={{ md: 5, base: 2 }}
+                    ml={{ md: 2, base: 2 }} 
                   >
                     {card.description}
                   </Text>
@@ -244,7 +241,12 @@ const ResponsiveGrid = () => {
         opened={opened}
         onClose={close}
         centered
-        closeOnClickOutside={false}
+        closeOnClickOutside={false} 
+        overlayProps={{
+          backgroundOpacity: 0.55,
+          blur: 2,
+        }}
+
       >
         <Flex justify={"end"} className={classes.modalPositionBefore}>
           <Card
@@ -267,7 +269,7 @@ const ResponsiveGrid = () => {
                 {selectedTicket?.description}
               </Text>
             </Stack>
-            <Stack gap={0} className={classes.ticketPrice}  >
+            <Stack gap={0} className={classes.ticketPrice}>
               <Text fw={700} fz="25px" c={"#1BA0D9"}>
                 ₹{formatPrice(selectedTicket?.totalPrice)}
               </Text>
@@ -289,15 +291,15 @@ const ResponsiveGrid = () => {
                     ? 0.4
                     : 1
                 }
-                onClick={() =>  {
-                  if(!selectedTicket?.corporate){
-                    handleCounter("minus")
-                  }else{
-                    if(selectedTicket.count >= 6){
-                      handleCounter("minus")
+                onClick={() => {
+                  if (!selectedTicket?.corporate) {
+                    handleCounter("minus");
+                  } else {
+                    if (selectedTicket.count >= 6) {
+                      handleCounter("minus");
                     }
                   }
-                }} 
+                }}
                 className="pointer"
                 shadow="lg"
                 p={6}
@@ -306,7 +308,18 @@ const ResponsiveGrid = () => {
               >
                 <IconMinus size={12} color={"#1BA0D9"} />
               </Card>
-              <Text>{selectedTicket?.count || 1}</Text>
+              <Card
+                className="pointer"
+                shadow="md"
+                p={0}
+                px={8}
+                radius={"50%"}
+                bd={"1px solid #1BA0D9"}
+              >
+                <Flex w={"100%"} h={"100%"} justify={"center"} align={"center"}>
+                  <Text mt={-1} fz={12}>{selectedTicket?.count || 1}</Text>
+                </Flex>
+              </Card>
               <Card
                 onClick={() => handleCounter("add")}
                 className="pointer"
@@ -351,9 +364,24 @@ const ResponsiveGrid = () => {
                   enableSearch
                   inputClass={classes.phoneInputClass}
                   country="in"
+                  containerClass={classes.phoneContainerClass}
+                  containerStyle={
+                    form.errors.phone
+                      ? {
+                          border: "1px solid red",
+                          overflow: "hidden",
+                        }
+                      : {}
+                  }
+                  {...form.getInputProps("phone")}
                   dropdownClass={classes.dropdownClass}
                   buttonClass={classes.countryBtnClass}
                 />
+                {form.errors.phone && (
+                  <Text fz={12} c="red">
+                    {form.errors.phone}
+                  </Text>
+                )}
               </Stack>
             </Stack>
 
