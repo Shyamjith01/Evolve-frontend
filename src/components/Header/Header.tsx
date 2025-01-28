@@ -68,7 +68,6 @@ export function Header() {
   const links = mockdata.map((item) => (
     <UnstyledButton className={classes.subLink} key={item.title}>
       <Group wrap="nowrap" align="flex-start">
-        themeicon
         <div>
           <Text size="sm" fw={500}>
             {item.title}
@@ -132,7 +131,7 @@ export function Header() {
           h="100%"
         >
           <Group mt={20}>
-            <Image width={matches ? 100 : 130} src={logo} alt="logo" />
+            <Image width={matches ? 115 : 130} src={logo} alt="logo" />
           </Group>
           <Group  mt={15} h="100%" gap={0} visibleFrom="sm">
             <Links />

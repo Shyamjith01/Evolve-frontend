@@ -28,12 +28,12 @@ export default function SponseredSection() {
             <Text fz={35} fw={700} c="brand.2">
               Co Sponsered by
             </Text>
-            <Flex mb={50} wrap={"wrap"} gap={50} align={"center"}>
+            {/* <Flex mb={50} wrap={"wrap"} gap={50} align={"center"}>
               <Image src={jainamImg} alt="jainamImg" />
               <Image src={aliceBlueImg} alt="jainamImg" />
               <Image src={acumenImg} alt="jainamImg" />
               <Image src={tradeJiniImg} alt="jainamImg" />
-            </Flex>
+            </Flex> */}
           </Stack>
         </Carousel.Slide>
         <Carousel.Slide>

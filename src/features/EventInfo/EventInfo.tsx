@@ -7,11 +7,14 @@ import shivakeraImg from "../../../public/Images/shivakera.webp";
 import roundedBg from "../../../public/icons/roundedBgIcon.png";
 import personImg2 from "../../../public/Images/person2.webp";
 import personImg3 from "../../../public/Images/person3.webp";
+import { useMediaQuery } from "@mantine/hooks";
 
 export default function EventInfo() {
+  const matches = useMediaQuery("(max-width: 485px)");
+
   return (
     <>
-      <Group  bg={"brand.2"} h={"auto"}>
+      <Group bg={"brand.2"} h={"auto"}>
         <Container size={1200} w={"100%"} my={50}>
           <Grid align="center" mb={"auto"} w={"100%"}>
             <Grid.Col span={{ md: 4.3, base: 12 }}>
@@ -43,15 +46,10 @@ export default function EventInfo() {
                 <Text tt={"uppercase"} fw={700} fz={"35px"} c={"brand.1"}>
                   The event
                 </Text>
-                <Text 
-                  fw={400}
-                  fz={"16px"}
-                  lh={"27px"}
-                  c={"brand.1"}
-                >
-                  <strong>EVOLVE 2025</strong> is a transformative one-day event crafted to
-                  inspire professionals and organizations to embrace a
-                  leadership mindset grounded in trust, ethics, and values,
+                <Text fw={400} fz={"16px"} lh={"27px"} c={"brand.1"}>
+                  <strong>EVOLVE 2025</strong> is a transformative one-day event
+                  crafted to inspire professionals and organizations to embrace
+                  a leadership mindset grounded in trust, ethics, and values,
                   fostering an environment of growth and innovation. Featuring
                   globally acclaimed motivational speaker Mr. Shiv Khera, this
                   event delivers a powerful blend of insights, tools, and
@@ -61,29 +59,35 @@ export default function EventInfo() {
                   progress, gaining the clarity and confidence needed to
                   navigate challenges and create meaningful impact in their
                   workspaces. With its engaging sessions and thought-provoking
-                  content, <strong>EVOLVE 2025</strong> serves as a catalyst for unlocking
-                  potential, building strong teams, and shaping a future defined
-                  by purpose and excellence.
+                  content, <strong>EVOLVE 2025 </strong> serves as a catalyst
+                  for unlocking potential, building strong teams, and shaping a
+                  future defined by purpose and excellence.
                 </Text>
               </Stack>
             </Grid.Col>
           </Grid>
         </Container>
       </Group>
-      <Group style={{overflow:"hidden"}} h={"auto"} mih={"2rem"} py={50}>
+      <Group style={{ overflow: "hidden" }} h={"auto"} mih={"2rem"} py={50}>
         <Grid w={"100%"} align="center">
           <Grid.Col pos={"relative"} span={{ md: 6, base: 12 }}>
             <Card className={classes.leftSecEmptyCard}></Card>
             <Flex align={"center"} className={classes.positionCard}>
               <Text
-                opacity={0.4}
+                opacity={0.7}
                 fw={700}
-                fz={{ md: "52px", base: "45px" }}
+                fz={{ md: "52px", base: matches ? "25px" : "45px" }}
                 c={"#FFFFFF"}
+                pl={matches ? 3 :0}
+
+                lh={matches ? "29px" : "normal"}
+                mb={matches ? 15 : 0}
                 tt={"uppercase"}
                 className={classes.rotateText}
               >
-                Mr. Shiv Khera
+                {matches
+                  ? "Unlock Your True Potential with Mr.Shiv Khera!"
+                  : "Mr. Shiv Khera"}
               </Text>
               <Grid gutter={15} w={"100%"}>
                 <Grid.Col span={6}>
@@ -115,16 +119,27 @@ export default function EventInfo() {
             </Flex>
           </Grid.Col>
           <Grid.Col ml={{ md: -30, base: 10 }} span={{ md: 6, base: 12 }}>
-            <Stack gap={9} className={classes.rightSec}>
-              <Text tt={"uppercase"} fw={600} fz={16} c={"brand.3"}>
-                About
-              </Text>
-              <Text mt={-9} tt={"uppercase"} fw={700} fz={35} c={"brand.2"}>
-                Mr. Shiv Khera
-              </Text>
-              <Text fw={600} fz={"16px"} c={"brand.4"}>
-                Unlock Your True Potential with Shiv Khera!
-              </Text>
+            <Stack gap={6} className={classes.rightSec}>
+              {matches ? (
+                <>
+                  <Text tt={"uppercase"} fw={600} fz={22} c={"brand.3"}>
+                    About
+                  </Text>  
+                </>
+              ) : (
+                <>
+                  <Text tt={"uppercase"} fw={600} fz={16} c={"brand.3"}>
+                    About
+                  </Text>
+                  <Text mt={-9} tt={"uppercase"} fw={700} fz={35} c={"brand.2"}>
+                    Mr. Shiv Khera
+                  </Text>
+                  <Text fw={600} fz={"16px"} c={"brand.4"}>
+                    Unlock Your True Potential with Mr.Shiv Khera!
+                  </Text>
+                </>
+              )}
+
               <Text fz={"16px"} fw={400} w={"94%"} c={"brand.4"} lh={"27px"}>
                 Mr. Shiv Khera is a globally renowned motivational speaker,
                 best-selling author, and trusted leadership coach, dedicated to

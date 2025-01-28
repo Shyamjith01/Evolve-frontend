@@ -30,13 +30,12 @@ import PhoneInput from "react-phone-input-2";
 
 const sponsorships = [
   {
-    title: "Title Sponsor",
-    price: "₹3,50,000",
+    title: "Title Sponsor (2)",
+    price: "₹5,00,000",
     gst: "+ 18% GST",
     points: [
       "Prominent logo",
-      "Stage backdrop",
-      "Dedicated speaking",
+      "Stage backdrop", 
       "Presentation slot",
       "Complimentary stall space.",
     ],
@@ -44,8 +43,8 @@ const sponsorships = [
     cardImage: orangeCard,
   },
   {
-    title: "Powered By Sponsor",
-    price: "₹2,50,000",
+    title: "Powered By Sponsor (3)",
+    price: "₹4,00,000",
     gst: "+ 18% GST",
     points: [
       "Logo visibility",
@@ -56,8 +55,8 @@ const sponsorships = [
     cardImage: greenCard,
   },
   {
-    title: "Gifts and Goodies Sponsor",
-    price: "₹1,50,000",
+    title: "Co powered by",
+    price: "₹2,00,000",
     gst: "+ 18% GST",
     points: [
       "Logo printed on all distributed gift items",
@@ -129,6 +128,7 @@ export default function TicketInfo() {
     <Group
       mb={{ md: "15rem", base: "3rem" }}
       w="100%"
+      id="register"
       className={classes.ticketBg}
     >
       {/* <div className={classes.ticketOverlay}></div> */}

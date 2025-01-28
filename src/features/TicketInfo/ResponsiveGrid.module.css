@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-    width: 90%;
+    width: 98%;
     margin: 40px auto;
 }
 
@@ -76,8 +76,8 @@
 
 .responsiveText{
     @media (max-width:640px) {
-        font-size: 10px !important;      
-        line-height: 12px !important;  
+        font-size: 14px !important;      
+        line-height: 15px !important;  
     }
 }
 

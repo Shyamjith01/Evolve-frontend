@@ -12,6 +12,8 @@ import SalesSection from "@/features/Sales/SalesSection";
 import Footer from "@/components/Footer/Footer";
 import 'react-phone-input-2/lib/style.css'
 import '@mantine/carousel/styles.css';
+import { IconBrandWhatsapp } from "@tabler/icons-react";
+import { Group } from "@mantine/core";
  
 
 export default function Home() {
@@ -25,6 +27,10 @@ export default function Home() {
       <TicketInfo />
       <SalesSection />
       <Footer />
+      <Group style={{cursor:"pointer"}} onClick={() => window.open("https://wa.me/9746095931", "_blank")} className={"whatsappContainer"}>
+        <IconBrandWhatsapp color="white" />
+        <span className="wave"></span>
+      </Group>
     </>
   );
 }

@@ -1,6 +1,7 @@
 import { Header } from "@/components/Header/Header";
 import classes from "./Banner.module.css";
 import {
+  Button,
   Card,
   Container,
   Divider,
@@ -22,10 +23,12 @@ const EstimateCard = ({
   count,
   description,
   bg,
+  specialCase,
 }: {
   count: number | null;
   description: string;
   bg: string;
+  specialCase?: boolean;
 }) => {
   return (
     <Card
@@ -42,6 +45,15 @@ const EstimateCard = ({
         className={classes.couterWrapp}
         gap={4}
         align="center"
+        style={
+          specialCase
+            ? {
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "center",
+              }
+            : {}
+        }
       >
         {count && (
           <Text
@@ -58,8 +70,9 @@ const EstimateCard = ({
           lh={"18px"}
           w={"60%"}
           c={"brand.0"}
-          mt={-10}
-          ta={"center"}
+          mt={specialCase ? 0 : -10}
+          ta={specialCase ? "start" : "center"}
+          pl={specialCase ? 10 : 0}
           tt={"uppercase"}
           fw={600}
           fz={"16px"}
@@ -111,12 +124,20 @@ export default function Banner() {
             <Grid w="100%">
               <Grid.Col span={{ md: 10, base: 12 }}>
                 <Flex w={"100%"} justify={"center"} align={"center"}>
-                  <Stack gap={0} ml={{ md: 130, bas: 0 }} w="100%">
-                    <Text className={classes.outlinedText}>EVOLVE 2025</Text>
+                  <Stack
+                    gap={4}
+                    mt={{ md: 30, base: 0 }}
+                    ml={{ md: 130, bas: 0 }}
+                    w="100%"
+                  >
+                    <Text py={10} className={classes.outlinedText}>
+                      SHIVA KHERA @ KOCHI
+                    </Text>
                     <Text
                       mt={-10}
                       lh={"41px"}
                       w={"80%"}
+                      tt={"uppercase"}
                       c={"brand.1"}
                       fz={"37px"}
                       fw={700}
@@ -349,6 +370,27 @@ export default function Banner() {
                         </Text>
                       </Flex>
                     </Flex>
+                    <Button
+                      mt={20}
+                      color="#1BA0D9"
+                      onClick={() => {
+                        const registerElement =
+                          document.getElementById("register");
+                        if (registerElement) {
+                          registerElement.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start",
+                          });
+                        }
+                      }}
+                      bd={"1px solid #FFFF"}
+                      className={classes.btnClass}
+                      variant="outlined"
+                      radius={"30px"}
+                      w={"fit-content"}
+                    >
+                      Register Now
+                    </Button>
                   </Stack>
                 </Flex>
               </Grid.Col>
@@ -357,7 +399,7 @@ export default function Banner() {
         </div>
         <div className={classes.bgOverlay}></div>
         <Container
-          mt={85}
+          mt={35} 
           className={classes.progressContainer}
           w={"100%"}
           size={1200}
@@ -373,11 +415,7 @@ export default function Banner() {
               span={{ md: 3, base: 12 }}
               className={classes.estimateContainer}
             >
-              <EstimateCard
-                bg="#00AE71"
-                count={1000}
-                description="Attendees"
-              />
+              <EstimateCard bg="#00AE71" count={1000} description="Attendees" />
             </Grid.Col>
             <Grid.Col span={{ md: 1.8, base: 6 }}>
               <EstimateCard
@@ -428,7 +466,12 @@ export default function Banner() {
                   </Card>
                 </Grid.Col>
                 <Grid.Col span={12} h={"70px"}>
-                  <EstimateCard bg="#CFD762" count={null} description="" />
+                  <EstimateCard
+                    specialCase
+                    bg="#CFD762"
+                    count={20}
+                    description="STALLS"
+                  />
                 </Grid.Col>
               </Grid>
             </Grid.Col>
