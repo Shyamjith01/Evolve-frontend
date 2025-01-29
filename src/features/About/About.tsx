@@ -151,7 +151,7 @@ export default function About() {
                   fz={{md:"35px",base:"25px"}}
                   lh={"37px"}
                 >
-                  Key Takeaways from <br /> EVOLVE 2025
+                  values
                 </Text>
                 <Points
                   points={[

@@ -485,7 +485,7 @@ export default function Banner() {
             <Grid.Col span={{ md: 2.4, base: 6 }}>
               <EstimateCard
                 bg="#FF8B07"
-                count={25}
+                count={null}
                 description="Networking and learning"
               />
             </Grid.Col>
