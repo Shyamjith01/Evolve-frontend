@@ -1,7 +1,9 @@
 .bannerBg {
-    height: 100vh;
+    height: calc(100vh - 5vw);
     width: 100%;
     background-image: url("../../../public/Images/banner.webp");
+    /* background-image: url("../../../public/Images/banner2.jpg"); */
+
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
@@ -33,7 +35,7 @@
 .bgOverlay {
     /* background: linear-gradient(151.1deg, rgba(9, 0, 140, 0.61) 41.28%, rgba(240, 54, 21, 0.1098) 92.5%); */
     background: linear-gradient(160.1deg, rgba(9, 0, 140, 0.61) 42.28%, rgba(240, 54, 21, 0.1098) 89.5%);
-    height: 100vh;
+    height: calc(100vh - 5vw);
     width: 100%;
     position: absolute;
     top: 0;

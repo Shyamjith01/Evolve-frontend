@@ -18,7 +18,7 @@ import {
 } from "@tabler/icons-react";
 import Image from "next/image";
 import logo from "../../../public/icons/EvolveLogo.png";
-import classes from "./Footer.module.css"
+import classes from "./Footer.module.css";
 import Link from "next/link";
 
 export default function Footer() {
@@ -50,7 +50,12 @@ export default function Footer() {
                 <Text fz={"16px"} fw={400} c={"#FFFFFF"}>
                   Home
                 </Text>
-                <Text fz={"16px"} fw={400} c={"#FFFFFF"}>
+                <Text
+                  className="pointer" 
+                  fz={"16px"}
+                  fw={400}
+                  c={"#FFFFFF"}
+                >
                   About
                 </Text>
                 <Text fz={"16px"} fw={400} c={"#FFFFFF"}>
@@ -84,13 +89,32 @@ export default function Footer() {
               <Stack>
                 <Flex gap={8}>
                   <IconPhone color="#FFFFFF" />
-                  <Flex c={"#ffff"} gap={2}><Link className={classes.phoneNumberText} href="tel:+91 9995185190">+91 9995185190</Link>,<Link className={classes.phoneNumberText} href={"tel:8848085572"}> 8848085572</Link></Flex>
-
+                  <Flex c={"#ffff"} gap={2}>
+                    <Link
+                      className={classes.phoneNumberText}
+                      href="tel:+91 9995185190"
+                    >
+                      +91 9995185190
+                    </Link>
+                    ,
+                    <Link
+                      className={classes.phoneNumberText}
+                      href={"tel:8848085572"}
+                    >
+                      {" "}
+                      8848085572
+                    </Link>
+                  </Flex>
                 </Flex>
                 <Flex gap={8}>
                   <IconMail color="#FFFFFF" />
                   <Text fw={600} fz={"16px"} c={"#FFFFFF"}>
-                    <Link className={classes.phoneNumberText} href={"mailto:info@thebrandstories.co.in"}>info@thebrandstories.co.in</Link>
+                    <Link
+                      className={classes.phoneNumberText}
+                      href={"mailto:info@thebrandstories.co.in"}
+                    >
+                      info@thebrandstories.co.in
+                    </Link>
                   </Text>
                 </Flex>
               </Stack>

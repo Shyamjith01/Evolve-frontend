@@ -26,6 +26,9 @@ export default function Home() {
       <Schedules />
       <TicketInfo />
       <SalesSection />
+      <div id="sponsered">
+        <SponseredSection brandAssosiated /> 
+      </div>
       <Footer />
       <Group style={{cursor:"pointer"}} onClick={() => window.open("https://wa.me/9746095931", "_blank")} className={"whatsappContainer"}>
         <IconBrandWhatsapp color="white" />
