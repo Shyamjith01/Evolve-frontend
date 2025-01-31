@@ -80,6 +80,13 @@
   left: 50%;
   transform: translateX(-50%);
   top: 20px;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  @media (max-width:699px) {
+    top: 8vw !important;
+  }
 }
 
 
@@ -105,7 +112,10 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  padding: 20px;
+  padding: 10px;
+  @media (max-width:640px) {
+    margin-top: 15px;
+  }
 }
 
 @media (max-width: 1024px) {

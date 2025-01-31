@@ -10,11 +10,11 @@ import TicketInfo from "@/features/TicketInfo/TicketInfo";
 import About from "@/features/About/About";
 import SalesSection from "@/features/Sales/SalesSection";
 import Footer from "@/components/Footer/Footer";
-import 'react-phone-input-2/lib/style.css'
-import '@mantine/carousel/styles.css';
+import "react-phone-input-2/lib/style.css";
+import "@mantine/carousel/styles.css";
 import { IconBrandWhatsapp } from "@tabler/icons-react";
 import { Group } from "@mantine/core";
- 
+import GallerySec from "@/features/Gallery/GallerySec";
 
 export default function Home() {
   return (
@@ -22,15 +22,21 @@ export default function Home() {
       <Banner />
       <SponseredSection />
       <EventInfo />
-      <About /> 
+      <About />
       <Schedules />
       <TicketInfo />
       <SalesSection />
-      <div id="sponsered">
-        <SponseredSection brandAssosiated /> 
+      <GallerySec />
+      <div id="sponsered" style={{marginTop:"-10px"}}>
+        <SponseredSection brandAssosiated />
       </div>
+
       <Footer />
-      <Group style={{cursor:"pointer"}} onClick={() => window.open("https://wa.me/9746095931", "_blank")} className={"whatsappContainer"}>
+      <Group
+        style={{ cursor: "pointer" }}
+        onClick={() => window.open("https://wa.me/9746095931", "_blank")}
+        className={"whatsappContainer"}
+      >
         <IconBrandWhatsapp color="white" />
         <span className="wave"></span>
       </Group>

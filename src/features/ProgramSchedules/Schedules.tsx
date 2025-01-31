@@ -7,7 +7,9 @@ import {
   Stack,
   Text,
 } from "@mantine/core";
-import rightIcon from "../../../public/icons/rightIcon.png";
+// import rightIcon from "../../../public/icons/rightIcon.png";
+import rightIcon from "../../../public/icons/right-arrow.svg";
+
 import Image from "next/image";
 import classes from "./Shedules.module.css";
 import { IconClock } from "@tabler/icons-react";
@@ -23,7 +25,7 @@ const ScheduledItem = ({
 }) => {
   return (
     <>
-      <Flex wrap={"wrap"} gap={30} align={"center"}>
+      <Flex wrap={"wrap"} gap={18} align={"center"}>
         <Card
           style={{ overflow: "visible" }}
           pos={"relative"}
@@ -34,22 +36,22 @@ const ScheduledItem = ({
         >
           <Flex align={"center"} gap={5}>
             <IconClock strokeWidth={1.8} color="white" size={18} />
-            <Text c={"brand.0"} fz={"16px"} fw={600}>
+            <Text c={"brand.0"} fz={{md:"16px",base:"14px"}} fw={600}>
               {time}
             </Text>
           </Flex>
 
           <Group className={classes.positionCenter}>
-            <Image src={rightIcon} alt={"right"} />
+            <Image src={rightIcon} quality={100} alt={"right"} />
           </Group>
         </Card>
         <Text
           display={{ md: "flex", base: "content" }}
           c={"brand.4"}
           fw={600}
-          fz={"18px"}
+          fz={{md:"18px",base:"14px"}}
         >
-          <span
+          {highlightText && <span
             style={{
               color: "#1BA0D9",
               fontWeight: 600,
@@ -58,7 +60,7 @@ const ScheduledItem = ({
             }}
           >
             {highlightText ? `${highlightText}: ` : ""}
-          </span>
+          </span>}
           {description}
         </Text>
       </Flex>

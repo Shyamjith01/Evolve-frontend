@@ -1,0 +1,19 @@
+.bg{
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+    background: linear-gradient(180deg, #1BA0D9 0%, #001E68 100%);
+}
+
+
+.Galleryimg{
+    width: 100% !important;
+    height: 20rem !important;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    object-fit: cover;
+}

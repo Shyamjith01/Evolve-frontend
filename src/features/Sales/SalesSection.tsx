@@ -1,5 +1,7 @@
 import { Button, Container, Flex, Grid, Text } from "@mantine/core";
-import salesImg1 from "../../../public/Images/sales1.png";
+// import salesImg1 from "../../../public/Images/sales1.png";
+import salesImg1 from "../../../public/Images/stallMainImg.jpeg";
+
 import salesImg2 from "../../../public/Images/sales2.png";
 import salesImg3 from "../../../public/Images/sales3.webp";
 import salesImg4 from "../../../public/Images/sales4.png";
@@ -11,68 +13,19 @@ import classes from "./Sales.module.css";
 
 export default function SalesSection() {
   return (
-    <Container mb={10} size={1200} w={"100%"}>
-      <Text tt={"uppercase"} c={"brand.2"} fw={700} fz={"35px"}>
+    <Container mb={50} mt={{md:0,base:-80}} size={1200} w={"100%"}>
+      <Text tt={"uppercase"} c={"brand.2"} fw={700} fz={{ md: 35, base: 25 }}>
         Stalls
       </Text>
 
-      <Grid w="100%" mt={15}>
-        <Grid.Col span={{ md: 4.5, sm:6,xs:12 }}>
+      <Grid w="100%" mt={35}>
+        <Grid.Col span={{ md: 12, sm:6,xs:12 }}>
           <Image
             className={classes.raduisImg}
             src={salesImg1}
             alt="salesImg1"
           />
-        </Grid.Col>
-        <Grid.Col span={{ md: 4.5,  sm:6,xs:12}}>
-          <Grid gutter={10} w={"100%"}>
-            <Grid.Col span={12}>
-              <Image
-                className={classes.raduisImg}
-                src={salesImg2}
-                height={240}
-                alt="salesImg1"
-              />
-            </Grid.Col>
-            <Grid.Col span={12}>
-              <Image
-                className={classes.raduisImg}
-                src={salesImg3}
-                height={240}
-                alt="salesImg1"
-              />
-            </Grid.Col>
-          </Grid>
-        </Grid.Col>
-        <Grid.Col span={{ md: 3, base: 12 }}>
-          <Grid gutter={10} w={"100%"}>
-            <Grid.Col span={{ md: 12, base: 6 }}>
-              <Image
-                className={classes.raduisImg}
-                src={salesImg4}
-                height={154}
-                alt="salesImg1"
-              />
-            </Grid.Col>
-            <Grid.Col span={{ md: 12, base: 6 }}>
-              <Image
-                className={classes.raduisImg}
-                src={salesImg5}
-                height={154}
-                alt="salesImg1"
-              />
-            </Grid.Col>
-            <Grid.Col span={{ md: 12, base: 12 }}>
-              <Image
-                quality={100}
-                className={`${classes.raduisImg} ${classes.lastImg}`}
-                src={salesImg6}
-                height={154}
-                alt="salesImg1"
-              />
-            </Grid.Col>
-          </Grid>
-        </Grid.Col>
+        </Grid.Col> 
       </Grid>
       <Flex w="100%" my={28} justify="center">
         <Text

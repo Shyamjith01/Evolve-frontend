@@ -2,5 +2,21 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: -7px;
+    right: -14px;
+
+    @media (max-width:640px) {
+        bottom: -23px !important;
+        left: 10px;
+        width: fit-content;
+        transform: rotate(90deg);
+        -webkit-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+}
+}
+
+.positionCenter img{
+    width: 24px;
+    height: 24px;
 }

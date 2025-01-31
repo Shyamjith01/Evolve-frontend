@@ -135,7 +135,7 @@ export default function TicketInfo() {
       <Group className={classes.ticketContent}>
         <Container size={1200} w={"100%"}>
           <Flex w={"100%"} justify={"center"} mt={40}>
-            <Text tt={"uppercase"} fz={35} fw={700} c={"brand.0"}>
+            <Text tt={"uppercase"} fz={{md:35,base:25}} fw={700} c={"brand.0"}>
               Ticket Information
             </Text>
           </Flex>
@@ -147,7 +147,7 @@ export default function TicketInfo() {
               w={"100%"}
               ta={"center"}
               tt={"uppercase"}
-              fz={35}
+              fz={{md:35,base:25}}
               fw={700}
               c={"brand.0"}
             >

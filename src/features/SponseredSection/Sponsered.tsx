@@ -16,6 +16,9 @@ import lexusLog from "../../../public/Images/brands/lexus-logo-png-transparent.p
 import logo from "../../../public/Images/brands/logo.png";
 import royalAssistancelog from "../../../public/Images/brands/logos-07-1024x1024.png";
 import MygLogo from "../../../public/Images/brands/my g.webp";
+import HomeLog from "../../../public/Images/brands/homeLogo.png";
+import AjmiLogo from "../../../public/Images/brands/AJMI LOGO Square Formation (1) (1)-1.png";
+
 import { useMediaQuery } from "@mantine/hooks";
 
 const SponseredArray = [
@@ -39,13 +42,14 @@ const brands = [
     images: [
       AcumenLogo,
       royalAssistancelog,
-
       JainamLogo,
       BmwLogo,
       lexusLog,
       logo,
       MygLogo,
       AliceBlueLogo,
+      HomeLog,
+      AjmiLogo, 
 
     ],
   },
@@ -96,7 +100,7 @@ export default function SponseredSection({
         {brandAssosiated &&
           brands.map((item) => {
             return (
-              <Carousel.Slide mt={20}>
+              <Carousel.Slide my={40}>
                 <Stack gap={40} my={{ md: 30, base: 90 }}>
                   <Text fz={{ md: 35, base: 25 }} fw={700} c="brand.2">
                     {item.name}

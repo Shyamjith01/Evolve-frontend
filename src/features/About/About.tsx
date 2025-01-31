@@ -94,7 +94,7 @@ export default function About() {
             implement meaningful change.
           </Text>
 
-          <Divider my="70px" color="brand.5" />
+          <Divider my="50px" color="brand.5" />
 
           <Grid w="100%">
             <Grid.Col span={{ md: 6, base: 12 }}>
