@@ -6,7 +6,7 @@
 
     @media (max-width:640px) {
         bottom: -23px !important;
-        left: 10px;
+        left: 13px;
         width: fit-content;
         transform: rotate(90deg);
         -webkit-transform: rotate(90deg);
