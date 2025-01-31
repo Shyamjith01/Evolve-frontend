@@ -106,7 +106,6 @@ const ResponsiveGrid = () => {
   });
 
   const handleTicketSelect = (data: CardData) => {
-    console.log(data, "datadata");
     setSelectedTicket({
       ...data,
       totalPrice: data.count * data.price,
@@ -114,7 +113,6 @@ const ResponsiveGrid = () => {
     open();
   };
 
-  console.log(selectedTicket?.count, "selectedTicketcc");
   const handleCounter = (type: string) => {
     if (!selectedTicket || selectedTicket.id === undefined) return;
 

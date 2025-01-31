@@ -64,7 +64,6 @@ export default function SponseredSection({
 
   const matches = useMediaQuery("(max-width: 640px)");
 
-  console.log(autoplay, "autoplay");
   return (
     <Container  size={1200} w={"100%"}>
       <Carousel
