@@ -11,7 +11,7 @@ import Img7 from "../../../public/Images/gallery/imgg7.jpg";
 import Img8 from "../../../public/Images/gallery/imgg8.jpg";
 import Img9 from "../../../public/Images/gallery/imgg9.jpg";
 import Img10 from "../../../public/Images/gallery/imgg10.jpg";
-import Img11 from "../../../public/Images/gallery/img11.jpg";
+import Img11 from "../../../public/Images/gallery/imgg11.jpg";
 import { useMediaQuery } from "@mantine/hooks";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
