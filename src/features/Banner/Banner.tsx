@@ -60,7 +60,7 @@ const EstimateCard = ({
             c={"brand.0"}
             fw={700}
             className={classes.countText}
-            fz={"35px"}
+            fz={specialCase ? "25px":"35px"}
           >
             <CountUp end={count} duration={4} /> {count > 1 && "+"}
           </Text>
@@ -68,7 +68,7 @@ const EstimateCard = ({
 
         <Text
           lh={"18px"}
-          w={"60%"}
+          w={specialCase ? "fit-content" :"60%"}
           c={"brand.0"}
           mt={specialCase ? 0 : -10}
           ta={specialCase ? "start" : "center"}

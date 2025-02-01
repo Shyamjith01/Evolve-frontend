@@ -152,9 +152,9 @@ export default function GallerySec() {
   const handleClick = (index: number, item: Image) => setIndex(index);
 
   return (
-    <div>
+    <div className={classes.bg}>
       <Container size={1200} mb={20} w={"100%"}>
-        <Text fz={{ md: 35, base: 25 }} fw={700} mb={15} c="brand.2">
+        <Text ml={2} fz={{ md: 35, base: 25 }} fw={700} mb={15} c="white">
           Gallery
         </Text> 
 
