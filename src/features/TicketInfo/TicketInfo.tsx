@@ -27,6 +27,7 @@ import ResponsiveGrid from "./ResponsiveGrid";
 import { useDisclosure } from "@mantine/hooks";
 import { useForm } from "@mantine/form";
 import PhoneInput from "react-phone-input-2";
+import { FadeInSection } from "@/components/FadeSection";
 
 const sponsorships = [
   {
@@ -35,7 +36,7 @@ const sponsorships = [
     gst: "+ 18% GST",
     points: [
       "Prominent logo",
-      "Stage backdrop", 
+      "Stage backdrop",
       "Presentation slot",
       "Complimentary stall space.",
     ],
@@ -134,12 +135,18 @@ export default function TicketInfo() {
       {/* <div className={classes.ticketOverlay}></div> */}
       <Group className={classes.ticketContent}>
         <Container size={1200} w={"100%"}>
-          <Flex w={"100%"} justify={"center"} mt={40}>
-            <Text tt={"uppercase"} fz={{md:35,base:25}} fw={700} c={"brand.0"}>
-              Ticket Information
-            </Text>
-          </Flex>
-
+          <FadeInSection y={40}>
+            <Flex w={"100%"} justify={"center"} mt={40}>
+              <Text
+                tt={"uppercase"}
+                fz={{ md: 35, base: 25 }}
+                fw={700}
+                c={"brand.0"}
+              >
+                Ticket Information
+              </Text>
+            </Flex>
+          </FadeInSection>
           <ResponsiveGrid />
 
           <Flex mb={50} direction={"column"} w={"100%"} mt={40}>
@@ -147,7 +154,7 @@ export default function TicketInfo() {
               w={"100%"}
               ta={"center"}
               tt={"uppercase"}
-              fz={{md:35,base:25}}
+              fz={{ md: 35, base: 25 }}
               fw={700}
               c={"brand.0"}
             >
@@ -156,49 +163,51 @@ export default function TicketInfo() {
 
             <div className={classes.gridContainer}>
               {sponsorships.map((item, index) => (
-                <div
-                  key={index}
-                  className={classes.card}
-                  style={{ borderColor: item.color }}
-                >
-                  <Image
-                    className={classes.cardImage}
-                    src={item.cardImage}
-                    alt={item.title}
-                  />
-                  <div className={classes.content}>
-                    <Stack
-                      align="center"
-                      gap={0}
-                      className={classes.horizontalCenter}
-                      pos={"absolute"}
-                      top={15}
-                      w={"100%"}
-                    >
-                      <Text fw={600} fz="16px" c={"brand.0"}>
-                        {item.title}
-                      </Text>
-                      <Text fw={700} fz="35px" mt={-8} c={"brand.0"}>
-                        {item.price}
-                      </Text>
-                      <Text fw={700} fz="16px" mt={-8} c={"brand.0"}>
-                        {item.gst}
-                      </Text>
-                    </Stack>
-                    <Points points={item.points} />
-                    <div
-                      className={classes.reserveSpot}
-                      style={{ backgroundColor: item.color }}
-                    >
-                      Reserve Your Spot Now!
+                <FadeInSection y={50}>
+                  <div
+                    key={index}
+                    className={classes.card}
+                    style={{ borderColor: item.color }}
+                  >
+                    <Image
+                      className={classes.cardImage}
+                      src={item.cardImage}
+                      alt={item.title}
+                    />
+                    <div className={classes.content}>
+                      <Stack
+                        align="center"
+                        gap={0}
+                        className={classes.horizontalCenter}
+                        pos={"absolute"}
+                        top={15}
+                        w={"100%"}
+                      >
+                        <Text fw={600} fz="16px" c={"brand.0"}>
+                          {item.title}
+                        </Text>
+                        <Text fw={700} fz="35px" mt={-8} c={"brand.0"}>
+                          {item.price}
+                        </Text>
+                        <Text fw={700} fz="16px" mt={-8} c={"brand.0"}>
+                          {item.gst}
+                        </Text>
+                      </Stack>
+                      <Points points={item.points} />
+                      <div
+                        className={classes.reserveSpot}
+                        style={{ backgroundColor: item.color }}
+                      >
+                        Reserve Your Spot Now!
+                      </div>
                     </div>
                   </div>
-                </div>
+                </FadeInSection>
               ))}
             </div>
           </Flex>
         </Container>
-      </Group> 
+      </Group>
     </Group>
   );
 }

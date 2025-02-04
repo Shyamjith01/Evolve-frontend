@@ -17,6 +17,7 @@ import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { useState } from "react";
 import Image from "next/image";
+import { FadeInSection } from "@/components/FadeSection";
 
 interface Image {
   src: string;
@@ -156,21 +157,24 @@ export default function GallerySec() {
       <Container size={1200} mb={20} w={"100%"}>
         <Text ml={2} fz={{ md: 35, base: 25 }} fw={700} mb={15} c="white">
           Gallery
-        </Text> 
+        </Text>
 
-        <Gallery
-          enableImageSelection={false}
-          rowHeight={isMobile ? 280 : 250} 
-          margin={5}  
-          onClick={handleClick}
-          images={IMAGES} 
-        />
+        <FadeInSection y={50}>
+          <Gallery
+            enableImageSelection={false}
+            rowHeight={isMobile ? 280 : 250}
+            margin={5}
+            onClick={handleClick}
+            images={IMAGES}
+          />
+        </FadeInSection>
+
         <Lightbox
           slides={slides}
           open={index >= 0}
           index={index}
           close={() => setIndex(-1)}
-        /> 
+        />
       </Container>
     </div>
   );

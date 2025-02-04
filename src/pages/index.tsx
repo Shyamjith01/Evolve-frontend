@@ -15,6 +15,8 @@ import "@mantine/carousel/styles.css";
 import { IconBrandWhatsapp } from "@tabler/icons-react";
 import { Group } from "@mantine/core";
 import GallerySec from "@/features/Gallery/GallerySec";
+import { FadeInSection } from "@/components/FadeSection";
+import { motion } from "framer-motion";
 
 export default function Home() {
   return (
@@ -27,19 +29,24 @@ export default function Home() {
       <TicketInfo />
       <SalesSection />
       <GallerySec />
-      <div id="sponsered" style={{marginTop:"-10px"}}>
+      <div id="sponsered" style={{ marginTop: "-10px" }}>
         <SponseredSection brandAssosiated />
       </div>
 
       <Footer />
-      <Group
-        style={{ cursor: "pointer" }}
-        onClick={() => window.open("https://wa.me/9746095931", "_blank")}
+      <motion.div
         className={"whatsappContainer"}
+        animate={{ y: -440 }}
+        transition={{ type: "spring" }}
       >
-        <IconBrandWhatsapp color="white" />
-        <span className="wave"></span>
-      </Group>
+        <Group
+          style={{ cursor: "pointer" }}
+          onClick={() => window.open("https://wa.me/9746095931", "_blank")}
+        >
+          <IconBrandWhatsapp color="white" />
+          <span className="wave"></span>
+        </Group>
+      </motion.div>
     </>
   );
 }

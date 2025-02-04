@@ -20,6 +20,7 @@ import HomeLog from "../../../public/Images/brands/homeLogo.png";
 import AjmiLogo from "../../../public/Images/brands/AJMI LOGO Square Formation (1) (1)-1.png";
 
 import { useMediaQuery } from "@mantine/hooks";
+import { FadeInSection } from "@/components/FadeSection";
 
 const SponseredArray = [
   {
@@ -49,8 +50,7 @@ const brands = [
       MygLogo,
       AliceBlueLogo,
       HomeLog,
-      AjmiLogo, 
-
+      AjmiLogo,
     ],
   },
 ];
@@ -65,7 +65,7 @@ export default function SponseredSection({
   const matches = useMediaQuery("(max-width: 640px)");
 
   return (
-    <Container  size={1200} w={"100%"}>
+    <Container size={1200} w={"100%"}>
       <Carousel
         withIndicators
         withControls={false}
@@ -81,18 +81,16 @@ export default function SponseredSection({
           SponseredArray.map((item) => {
             return (
               <Carousel.Slide>
-                <Carousel.Slide>
-                  <Stack gap={40} my={{ md: 30, base: 90 }}>
-                    <Text fz={35} fw={700} c="brand.2">
-                      {item.name}
-                    </Text>
-                    <Flex mb={50} wrap={"wrap"} gap={50} align={"center"}>
-                      {item.images.map((img) => {
-                        return <Image src={img} alt="jainamImg" />;
-                      })}
-                    </Flex>
-                  </Stack>
-                </Carousel.Slide>
+                <Stack gap={40} my={{ md: 30, base: 90 }}>
+                  <Text fz={35} fw={700} c="brand.2">
+                    {item.name}
+                  </Text>
+                  <Flex mb={50} wrap={"wrap"} gap={50} align={"center"}>
+                    {item.images.map((img) => {
+                      return <Image src={img} alt="jainamImg" />;
+                    })}
+                  </Flex>
+                </Stack>
               </Carousel.Slide>
             );
           })}
@@ -112,24 +110,26 @@ export default function SponseredSection({
                     align={"center"}
                     justify={matches ? "center" : "start"}
                   >
-                    {item.images.map((img) => {
+                    {item.images.map((img,i) => {
                       return (
-                        <Image
-                          style={{
-                            width: matches ? "5rem" : "10rem",
-                            height: matches ? "3rem" : "4rem",
-                            objectFit: "contain",
-                            transition: "transform 0.3s ease",
-                          }}
-                          onMouseEnter={(e) =>
-                            (e.currentTarget.style.transform = "scale(1.1)")
-                          }
-                          onMouseLeave={(e) =>
-                            (e.currentTarget.style.transform = "scale(1)")
-                          }
-                          src={img}
-                          alt="jainamImg"
-                        />
+                        <FadeInSection duration={(i * 0.1) + 1} y={40}>
+                          <Image
+                            style={{
+                              width: matches ? "5rem" : "10rem",
+                              height: matches ? "3rem" : "4rem",
+                              objectFit: "contain",
+                              transition: "transform 0.3s ease",
+                            }}
+                            onMouseEnter={(e) =>
+                              (e.currentTarget.style.transform = "scale(1.1)")
+                            }
+                            onMouseLeave={(e) =>
+                              (e.currentTarget.style.transform = "scale(1)")
+                            }
+                            src={img}
+                            alt="jainamImg"
+                          />
+                        </FadeInSection>
                       );
                     })}
                   </Flex>

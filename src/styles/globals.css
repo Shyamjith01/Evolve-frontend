@@ -35,7 +35,7 @@ body {
 .whatsappContainer {
   position: fixed;
   right: 30px;
-  bottom: 30px;
+  bottom: -410px;
   background-color: #1BA0D9;
   padding: 15px;
   border-radius: 50%;
@@ -45,8 +45,10 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   @media (max-width:640px) {
-    right: 25px;
-    bottom: 25px;
+    /* right: 25px;
+    bottom: 25px; */
+    right: 30px;
+    bottom: -420px;
   }
 }
 

@@ -21,6 +21,7 @@ import PhoneInput from "react-phone-input-2";
 import { title } from "process";
 import { log } from "console";
 import { IconMinus, IconPlus } from "@tabler/icons-react";
+import { FadeInSection } from "@/components/FadeSection";
 
 interface CardData {
   id: number;
@@ -145,86 +146,88 @@ const ResponsiveGrid = () => {
     <div className={styles.gridContainer}>
       <>
         {cardData.map((card, i) => (
-          <div
-            onClick={() => i !== 2 && handleTicketSelect(card)}
-            className={styles.card}
-            key={card.id}
-          >
-            <Grid w="100%" p={0} pb={4.5}>
-              <Grid.Col span={4.5} p={0} pl={7} pt={4} pos="relative">
-                <Flex
-                  align="center"
-                  w="100%"
-                  direction="column"
-                  justify="center"
-                  gap={0}
-                  pos="absolute"
-                  style={{ top: "52%", transform: "translateY(-50%)" }}
-                >
-                  <Text
-                    lh={{ md: "14px", base: "18px" }}
-                    tt="uppercase"
-                    ta="center"
-                    className={styles.responsiveText}
-                    fz={{ lg: "12px", md: "10px", sm: "12px", xs: "10px" }}
-                    fw={600}
-                    c="#000000"
-                    style={{ whiteSpace: "pre-line" }}
+          <FadeInSection y={50}>
+            <div
+              onClick={() => i !== 2 && handleTicketSelect(card)}
+              className={styles.card}
+              key={card.id}
+            >
+              <Grid w="100%" p={0} pb={4.5}>
+                <Grid.Col span={4.5} p={0} pl={7} pt={4} pos="relative">
+                  <Flex
+                    align="center"
+                    w="100%"
+                    direction="column"
+                    justify="center"
+                    gap={0}
+                    pos="absolute"
+                    style={{ top: "52%", transform: "translateY(-50%)" }}
                   >
-                    {card.title}
-                  </Text>
-                  <Text
-                    mt={-4}
-                    tt="uppercase"
-                    ta="center"
-                    fz={{ lg: "22px", md: "16px", sm: "25px", xs: "20px" }}
-                    fw={700}
-                    c="#000000"
-                  >
-                    ₹{formatPrice(card.price)}
-                  </Text>
-                  {card.discountedPrice && (
+                    <Text
+                      lh={{ md: "14px", base: "18px" }}
+                      tt="uppercase"
+                      ta="center"
+                      className={styles.responsiveText}
+                      fz={{ lg: "12px", md: "10px", sm: "12px", xs: "10px" }}
+                      fw={600}
+                      c="#000000"
+                      style={{ whiteSpace: "pre-line" }}
+                    >
+                      {card.title}
+                    </Text>
                     <Text
                       mt={-4}
                       tt="uppercase"
                       ta="center"
-                      fz={{ lg: "12px", md: "10px", sm: "10px", xs: "10px" }}
+                      fz={{ lg: "22px", md: "16px", sm: "25px", xs: "20px" }}
                       fw={700}
-                      className={styles.responsivesmallText}
-                      td="line-through"
                       c="#000000"
                     >
-                      {card.discountedPrice}
+                      ₹{formatPrice(card.price)}
                     </Text>
-                  )}
-                </Flex>
-                <Image
-                  src={card.image}
-                  style={{
-                    objectFit: "contain",
-                    height: "100%",
-                    width: "100%"
-                  }}
-                  alt={`${card.title} image`}
-                />
-              </Grid.Col>
-              <Grid.Col  span={7.5}>
-                <Flex h="100%" align="center">
-                  <Text
-                    tt="uppercase"
-                    ta="start"
-                    fz={{ md: "12px", base: "14px" }}
-                    fw={600}
-                    w="95%"
-                    c="#000000"
-                    ml={{ md: 0, base: 2 }} 
-                  >
-                    {card.description}
-                  </Text>
-                </Flex>
-              </Grid.Col>
-            </Grid>
-          </div>
+                    {card.discountedPrice && (
+                      <Text
+                        mt={-4}
+                        tt="uppercase"
+                        ta="center"
+                        fz={{ lg: "12px", md: "10px", sm: "10px", xs: "10px" }}
+                        fw={700}
+                        className={styles.responsivesmallText}
+                        td="line-through"
+                        c="#000000"
+                      >
+                        {card.discountedPrice}
+                      </Text>
+                    )}
+                  </Flex>
+                  <Image
+                    src={card.image}
+                    style={{
+                      objectFit: "contain",
+                      height: "100%",
+                      width: "100%",
+                    }}
+                    alt={`${card.title} image`}
+                  />
+                </Grid.Col>
+                <Grid.Col span={7.5}>
+                  <Flex h="100%" align="center">
+                    <Text
+                      tt="uppercase"
+                      ta="start"
+                      fz={{ md: "12px", base: "14px" }}
+                      fw={600}
+                      w="95%"
+                      c="#000000"
+                      ml={{ md: 0, base: 2 }}
+                    >
+                      {card.description}
+                    </Text>
+                  </Flex>
+                </Grid.Col>
+              </Grid>
+            </div>
+          </FadeInSection>
         ))}
       </>
 
@@ -239,12 +242,11 @@ const ResponsiveGrid = () => {
         opened={opened}
         onClose={close}
         centered
-        closeOnClickOutside={false} 
+        closeOnClickOutside={false}
         overlayProps={{
           backgroundOpacity: 0.55,
           blur: 2,
         }}
-
       >
         <Flex justify={"end"} className={classes.modalPositionBefore}>
           <Card
@@ -315,7 +317,9 @@ const ResponsiveGrid = () => {
                 bd={"1px solid #1BA0D9"}
               >
                 <Flex w={"100%"} h={"100%"} justify={"center"} align={"center"}>
-                  <Text mt={-1} fz={12}>{selectedTicket?.count || 1}</Text>
+                  <Text mt={-1} fz={12}>
+                    {selectedTicket?.count || 1}
+                  </Text>
                 </Flex>
               </Card>
               <Card
@@ -363,7 +367,6 @@ const ResponsiveGrid = () => {
                   inputClass={classes.phoneInputClass}
                   country="in"
                   containerClass={classes.phoneContainerClass}
-                  
                   {...form.getInputProps("phone")}
                   dropdownClass={classes.dropdownClass}
                   buttonClass={classes.countryBtnClass}

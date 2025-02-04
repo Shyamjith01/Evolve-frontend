@@ -9,6 +9,7 @@ import {
 } from "@mantine/core";
 // import rightIcon from "../../../public/icons/rightIcon.png";
 import rightIcon from "../../../public/icons/right-arrow.svg";
+import { motion } from "framer-motion";
 
 import Image from "next/image";
 import classes from "./Shedules.module.css";
@@ -24,8 +25,13 @@ const ScheduledItem = ({
   highlightText?: string;
 }) => {
   return (
-    <>
-      <Flex wrap={"wrap"} gap={18} align={"center"}>
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      viewport={{ once: true, amount: 0.3 }} // Triggers animation when 30% of the element is visible
+    >
+      <Flex wrap={"wrap"} mb={25} gap={18} align={"center"}>
         <Card
           style={{ overflow: "visible" }}
           pos={"relative"}
@@ -65,7 +71,7 @@ const ScheduledItem = ({
         </Text>
       </Flex>
       <Divider color="brand.6" my="10px" />
-    </>
+    </motion.div>
   );
 };
 

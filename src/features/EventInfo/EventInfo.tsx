@@ -8,12 +8,14 @@ import roundedBg from "../../../public/icons/roundedBgIcon.png";
 import personImg2 from "../../../public/Images/person2.webp";
 import personImg3 from "../../../public/Images/person3.webp";
 import { useMediaQuery } from "@mantine/hooks";
+import { FadeInSection } from "@/components/FadeSection";
+import { motion } from "framer-motion";
 
 export default function EventInfo() {
   const matches = useMediaQuery("(max-width: 485px)");
 
   return (
-    <>
+    <FadeInSection>
       <Group bg={"brand.2"} h={"auto"}>
         <Container size={1200} w={"100%"} my={50}>
           <Grid align="center" mb={"auto"} w={"100%"}>
@@ -78,8 +80,7 @@ export default function EventInfo() {
                 fw={700}
                 fz={{ md: "52px", base: matches ? "25px" : "45px" }}
                 c={"#FFFFFF"}
-                pl={matches ? 3 :0}
-
+                pl={matches ? 3 : 0}
                 lh={matches ? "29px" : "normal"}
                 mb={matches ? 15 : 0}
                 tt={"uppercase"}
@@ -124,7 +125,7 @@ export default function EventInfo() {
                 <>
                   <Text tt={"uppercase"} fw={600} fz={22} c={"brand.3"}>
                     About
-                  </Text>  
+                  </Text>
                 </>
               ) : (
                 <>
@@ -170,6 +171,6 @@ export default function EventInfo() {
           </Grid.Col>
         </Grid>
       </Group>
-    </>
+    </FadeInSection>
   );
 }
