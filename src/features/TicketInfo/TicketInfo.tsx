@@ -1,3 +1,4 @@
+import axios from "axios"
 import {
   Button,
   Card,
@@ -27,6 +28,7 @@ import ResponsiveGrid from "./ResponsiveGrid";
 import { useDisclosure } from "@mantine/hooks";
 import { useForm } from "@mantine/form";
 import PhoneInput from "react-phone-input-2";
+import { useEffect, useState } from "react";
 
 const sponsorships = [
   {
@@ -123,6 +125,21 @@ export default function TicketInfo() {
       email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
     },
   });
+
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const response = await axios.get('http://3.84.124.246:8000/api/v1/events/list');
+        setEvents(response.data);
+      } catch (error) {
+        console.log("Error fetching events:", error);
+      }
+    };
+
+    fetchEvents();
+  }, []);
 
   return (
     <Group

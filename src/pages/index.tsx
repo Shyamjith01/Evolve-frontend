@@ -30,7 +30,6 @@ export default function Home() {
       <div id="sponsered" style={{marginTop:"-10px"}}>
         <SponseredSection brandAssosiated />
       </div>
-
       <Footer />
       <Group
         style={{ cursor: "pointer" }}
