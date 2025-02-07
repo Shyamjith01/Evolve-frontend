@@ -131,8 +131,13 @@ export default function TicketInfo() {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get('http://3.84.124.246:8000/api/v1/events/list');
-        setEvents(response.data);
+        const response = await axios.get('https://admin.brandstories.org.in/api/v1/events/ticket-categories');
+        console.log(response,"axios response")
+        const dataWithCount = response.data.map((item:any) => ({
+          ...item,
+          count: item.name === "COPORATE TICKET" ? 5 : 1
+        })); 
+        setEvents(dataWithCount);
       } catch (error) {
         console.log("Error fetching events:", error);
       }
@@ -157,7 +162,7 @@ export default function TicketInfo() {
             </Text>
           </Flex>
 
-          <ResponsiveGrid />
+          <ResponsiveGrid ticketsData={events} />
 
           <Flex mb={50} direction={"column"} w={"100%"} mt={40}>
             <Text

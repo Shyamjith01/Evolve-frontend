@@ -1,8 +1,8 @@
 .bannerBg {
     height: calc(100vh - 5vw);
     width: 100%;
-    background-image: url("../../../public/Images/banner.webp");
-    /* background-image: url("../../../public/Images/banner2.jpg"); */
+    /* background-image: url("../../../public/Images/banner.webp"); */
+    background-image: url("../../../public/Images/banner2.jpg");
 
     background-size: cover;
     background-repeat: no-repeat;
@@ -20,6 +20,7 @@
     }
     @media (max-width:640px) and (min-width:450px) {
         margin-bottom: 165px  !important;
+        background-position:950px ;
         
     }
 

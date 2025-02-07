@@ -3,6 +3,7 @@ import Image, { StaticImageData } from "next/image";
 import golderCard from "../../../public/icons/golderCard.png";
 import silverCard from "../../../public/icons/silverCard.png";
 import styles from "./ResponsiveGrid.module.css";
+import { loadStripe } from '@stripe/stripe-js';
 import {
   Button,
   Card,
@@ -21,6 +22,7 @@ import PhoneInput from "react-phone-input-2";
 import { title } from "process";
 import { log } from "console";
 import { IconMinus, IconPlus } from "@tabler/icons-react";
+import axios from "axios";
 
 interface CardData {
   id: number;
@@ -36,7 +38,9 @@ interface CardData {
   totalPrice: number;
 }
 
-const ResponsiveGrid = () => {
+const ResponsiveGrid = ({ ticketsData }: { ticketsData: any }) => {
+  console.log("ticketsDatffa", ticketsData);
+  const [isLoading, setIsLoading] = useState(false);
   const cardData: CardData[] = [
     {
       id: 1,
@@ -78,8 +82,11 @@ const ResponsiveGrid = () => {
     },
   ];
 
+  const stripePromise = loadStripe('pk_test_51QjxPFFWdoDD2MB5GyC7aMwyhdwMRkYPLsTdMwRgpowqmTtrxjVdKpUI6RUyhyee25DZ1vec4xULSKdOlnu1T3fx00N8Bc9JWM');
+
+
   const [opened, { open, close }] = useDisclosure(false);
-  const [selectedTicket, setSelectedTicket] = useState<CardData>();
+  const [selectedTicket, setSelectedTicket] = useState<any>();
   function formatPrice(price?: number): string {
     if (price === undefined) {
       return "N/A";
@@ -141,10 +148,49 @@ const ResponsiveGrid = () => {
     }
   };
 
+
+  const handleSubmit = async (formvalue: any) => {
+    console.log("formvalue", formvalue);
+
+    const Rq = {
+      ticket_id: selectedTicket?.id,
+      quantity: selectedTicket?.count,
+      user_email: formvalue.email.toLowerCase(),
+    };
+
+    try {
+      setIsLoading(true);
+      const response = await axios(
+        "https://admin.brandstories.org.in/api/v1/events/create-checkout-session/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          data: Rq,
+        }
+      ); 
+
+      debugger
+      const stripe = await stripePromise;
+      
+      if(stripe){
+        const { error } = await stripe.redirectToCheckout({
+          sessionId: response.data.session_id,
+        });
+      }
+
+      console.log("api response", response);
+    } catch (error) {
+      console.log("api error", error);
+
+    }
+  };
+
   return (
     <div className={styles.gridContainer}>
       <>
-        {cardData.map((card, i) => (
+        {ticketsData.map((card: any, i: number) => (
           <div
             onClick={() => i !== 2 && handleTicketSelect(card)}
             className={styles.card}
@@ -169,9 +215,10 @@ const ResponsiveGrid = () => {
                     fz={{ lg: "12px", md: "10px", sm: "12px", xs: "10px" }}
                     fw={600}
                     c="#000000"
+                    w={"60%"}
                     style={{ whiteSpace: "pre-line" }}
                   >
-                    {card.title}
+                    {card.name}
                   </Text>
                   <Text
                     mt={-4}
@@ -182,6 +229,7 @@ const ResponsiveGrid = () => {
                     c="#000000"
                   >
                     ₹{formatPrice(card.price)}
+                    {/* {card.price} */}
                   </Text>
                   {card.discountedPrice && (
                     <Text
@@ -199,16 +247,16 @@ const ResponsiveGrid = () => {
                   )}
                 </Flex>
                 <Image
-                  src={card.image}
+                  src={i === 1 ? golderCard : silverCard}
                   style={{
                     objectFit: "contain",
                     height: "100%",
-                    width: "100%"
+                    width: "100%",
                   }}
                   alt={`${card.title} image`}
                 />
               </Grid.Col>
-              <Grid.Col  span={7.5}>
+              <Grid.Col span={7.5}>
                 <Flex h="100%" align="center">
                   <Text
                     tt="uppercase"
@@ -217,7 +265,7 @@ const ResponsiveGrid = () => {
                     fw={600}
                     w="95%"
                     c="#000000"
-                    ml={{ md: 0, base: 2 }} 
+                    ml={{ md: 0, base: 2 }}
                   >
                     {card.description}
                   </Text>
@@ -239,12 +287,11 @@ const ResponsiveGrid = () => {
         opened={opened}
         onClose={close}
         centered
-        closeOnClickOutside={false} 
+        closeOnClickOutside={false}
         overlayProps={{
           backgroundOpacity: 0.55,
           blur: 2,
         }}
-
       >
         <Flex justify={"end"} className={classes.modalPositionBefore}>
           <Card
@@ -283,14 +330,14 @@ const ResponsiveGrid = () => {
             <Flex gap={10}>
               <Card
                 opacity={
-                  selectedTicket?.corporate &&
+                  selectedTicket?.name === "COPORATE TICKET" &&
                   selectedTicket.count &&
                   selectedTicket.count <= 5
                     ? 0.4
                     : 1
                 }
                 onClick={() => {
-                  if (!selectedTicket?.corporate) {
+                  if (selectedTicket?.name !== "COPORATE TICKET") {
                     handleCounter("minus");
                   } else {
                     if (selectedTicket.count >= 6) {
@@ -315,7 +362,9 @@ const ResponsiveGrid = () => {
                 bd={"1px solid #1BA0D9"}
               >
                 <Flex w={"100%"} h={"100%"} justify={"center"} align={"center"}>
-                  <Text mt={-1} fz={12}>{selectedTicket?.count || 1}</Text>
+                  <Text mt={-1} fz={12}>
+                    {selectedTicket?.count || 1}
+                  </Text>
                 </Flex>
               </Card>
               <Card
@@ -330,7 +379,7 @@ const ResponsiveGrid = () => {
               </Card>
             </Flex>
           </Stack>
-          <form onSubmit={form.onSubmit((values) => console.log(values))}>
+          <form onSubmit={form.onSubmit((values) => handleSubmit(values))}>
             <Stack gap={10}>
               <TextInput
                 withAsterisk
@@ -363,7 +412,6 @@ const ResponsiveGrid = () => {
                   inputClass={classes.phoneInputClass}
                   country="in"
                   containerClass={classes.phoneContainerClass}
-                  
                   {...form.getInputProps("phone")}
                   dropdownClass={classes.dropdownClass}
                   buttonClass={classes.countryBtnClass}
@@ -377,7 +425,7 @@ const ResponsiveGrid = () => {
             </Stack>
 
             <Group justify="center" mt="md">
-              <Button bg={"#1BA0D9"} w={"8rem"} type="submit">
+              <Button loading={isLoading} bg={"#1BA0D9"} w={"8rem"} type="submit">
                 Book now
               </Button>
             </Group>
