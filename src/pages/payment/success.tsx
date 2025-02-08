@@ -12,7 +12,7 @@ import {
   createTheme,
 } from "@mantine/core";
 import { IconCircleCheckFilled } from "@tabler/icons-react";
-import { RingLoader } from './RingLoader';
+import RingLoader from './RingLoader';
 import { useRouter } from "next/router";
 
 const theme = createTheme({
@@ -31,6 +31,22 @@ export default function Success() {
   const [isSucces, setisSucces] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+
+  const callWebhookApi = async () => {
+    const response = await fetch("/api/webhook", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    console.log("data", data);
+  };
+
+  useEffect(() => {
+    callWebhookApi();
+  }, [])
+  
 
   return (
     <Container>

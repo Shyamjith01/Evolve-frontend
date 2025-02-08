@@ -2,8 +2,8 @@ import "@/styles/globals.css";
 import '@mantine/core/styles.css';
 import { createTheme, MantineProvider, MantineThemeOverride } from "@mantine/core";
 import type { AppProps } from "next/app";
-
-
+import { Notifications } from '@mantine/notifications';
+import '@mantine/notifications/styles.css';
 
 const theme: MantineThemeOverride = {
   colors: {
@@ -26,6 +26,7 @@ const theme: MantineThemeOverride = {
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <MantineProvider  theme={theme}>
+      <Notifications />
       <Component {...pageProps} />
     </MantineProvider>
   );

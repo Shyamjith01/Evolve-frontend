@@ -131,7 +131,7 @@ export default function TicketInfo() {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get('https://admin.brandstories.org.in/api/v1/events/ticket-categories');
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/events/ticket-categories`);
         console.log(response,"axios response")
         const dataWithCount = response.data.map((item:any) => ({
           ...item,

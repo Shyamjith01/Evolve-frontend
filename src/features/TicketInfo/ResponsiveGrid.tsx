@@ -3,7 +3,7 @@ import Image, { StaticImageData } from "next/image";
 import golderCard from "../../../public/icons/golderCard.png";
 import silverCard from "../../../public/icons/silverCard.png";
 import styles from "./ResponsiveGrid.module.css";
-import { loadStripe } from '@stripe/stripe-js';
+import { loadStripe } from "@stripe/stripe-js";
 import {
   Button,
   Card,
@@ -23,6 +23,7 @@ import { title } from "process";
 import { log } from "console";
 import { IconMinus, IconPlus } from "@tabler/icons-react";
 import axios from "axios";
+import { notifications } from "@mantine/notifications";
 
 interface CardData {
   id: number;
@@ -39,51 +40,10 @@ interface CardData {
 }
 
 const ResponsiveGrid = ({ ticketsData }: { ticketsData: any }) => {
-  console.log("ticketsDatffa", ticketsData);
+  console.log("process.env.STRIPE_KEY", process.env.NEXT_PUBLIC_STRIPE_KEY);
   const [isLoading, setIsLoading] = useState(false);
-  const cardData: CardData[] = [
-    {
-      id: 1,
-      title: "Early Bird \n Offer",
-      price: 6000,
-      discountedPrice: "₹7,000",
-      description: "General admission to all sessions and networking.",
-      image: golderCard, // Replace with the actual path
-      isSoldOut: false,
-      discount: true,
-      count: 1,
-      totalPrice: 6000,
-    },
-    {
-      id: 2,
-      title: "Corporate \n Ticket",
-      price: 5000,
-      discountedPrice: undefined,
-      description:
-        "Available until 31st March 2025. Don’t miss the chance to save!",
-      image: silverCard, // Replace with the actual path
-      isSoldOut: false,
-      corporate: true,
-      discount: false,
-      count: 5,
-      totalPrice: 5000,
-    },
-    {
-      id: 3,
-      title: "VIP",
-      price: 15000,
-      discountedPrice: undefined,
-      description: "(Sold Out)",
-      image: silverCard, // Replace with the actual path
-      isSoldOut: true,
-      discount: false,
-      count: 0,
-      totalPrice: 15000,
-    },
-  ];
 
-  const stripePromise = loadStripe('pk_test_51QjxPFFWdoDD2MB5GyC7aMwyhdwMRkYPLsTdMwRgpowqmTtrxjVdKpUI6RUyhyee25DZ1vec4xULSKdOlnu1T3fx00N8Bc9JWM');
-
+  const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY as string);
 
   const [opened, { open, close }] = useDisclosure(false);
   const [selectedTicket, setSelectedTicket] = useState<any>();
@@ -148,7 +108,6 @@ const ResponsiveGrid = ({ ticketsData }: { ticketsData: any }) => {
     }
   };
 
-
   const handleSubmit = async (formvalue: any) => {
     console.log("formvalue", formvalue);
 
@@ -161,7 +120,7 @@ const ResponsiveGrid = ({ ticketsData }: { ticketsData: any }) => {
     try {
       setIsLoading(true);
       const response = await axios(
-        "https://admin.brandstories.org.in/api/v1/events/create-checkout-session/",
+        `${process.env.NEXT_PUBLIC_BASE_URL}/events/create-checkout-session/`,
         {
           method: "POST",
           headers: {
@@ -169,12 +128,11 @@ const ResponsiveGrid = ({ ticketsData }: { ticketsData: any }) => {
           },
           data: Rq,
         }
-      ); 
-
-      debugger
+      );
+ 
       const stripe = await stripePromise;
-      
-      if(stripe){
+
+      if (stripe) {
         const { error } = await stripe.redirectToCheckout({
           sessionId: response.data.session_id,
         });
@@ -182,7 +140,13 @@ const ResponsiveGrid = ({ ticketsData }: { ticketsData: any }) => {
 
       console.log("api response", response);
     } catch (error) {
+      setIsLoading(false)
       console.log("api error", error);
+      notifications.show({
+        title: 'Something went wrong',
+        color:"red",
+        message: 'Please try again after some times.',
+      })
 
     }
   };
@@ -411,11 +375,22 @@ const ResponsiveGrid = ({ ticketsData }: { ticketsData: any }) => {
                   enableSearch
                   inputClass={classes.phoneInputClass}
                   country="in"
+                  inputStyle={{
+                    color: "black", // Ensure this is applied
+                  }}
+                  inputProps={{
+                    styles:{
+                      input: {
+                        color: "black", // Ensure this is applied
+                      }
+                    }
+                  }}
                   containerClass={classes.phoneContainerClass}
                   {...form.getInputProps("phone")}
                   dropdownClass={classes.dropdownClass}
                   buttonClass={classes.countryBtnClass}
                 />
+
                 {form.errors.phone && (
                   <Text fz={12} c="red">
                     {form.errors.phone}
@@ -425,7 +400,12 @@ const ResponsiveGrid = ({ ticketsData }: { ticketsData: any }) => {
             </Stack>
 
             <Group justify="center" mt="md">
-              <Button loading={isLoading} bg={"#1BA0D9"} w={"8rem"} type="submit">
+              <Button
+                loading={isLoading}
+                bg={"#1BA0D9"}
+                w={"8rem"}
+                type="submit"
+              >
                 Book now
               </Button>
             </Group>

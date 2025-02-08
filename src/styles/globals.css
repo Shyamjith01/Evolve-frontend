@@ -103,3 +103,8 @@ body {
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
 }
+
+.react-tel-input input {
+  color: black !important; /* Override the library's default styles */
+  font-weight: 600;
+}
