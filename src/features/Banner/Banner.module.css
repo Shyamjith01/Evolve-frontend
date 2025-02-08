@@ -2,7 +2,7 @@
     height: calc(100vh - 5vw);
     width: 100%;
     /* background-image: url("../../../public/Images/banner.webp"); */
-    background-image: url("../../../public/Images/banner2.jpg");
+    background-image: url("../../../public/Images/banner-web.jpg");
 
     background-size: cover;
     background-repeat: no-repeat;
@@ -11,6 +11,8 @@
     margin-bottom: 9rem !important;
     @media (max-width:1011px) {
         margin-bottom: 31vw !important;
+        background-position: center;
+        
     }
     @media (max-width:768px) {
         margin-bottom: 270px !important;
@@ -20,8 +22,11 @@
     }
     @media (max-width:640px) and (min-width:450px) {
         margin-bottom: 165px  !important;
-        background-position:950px ;
-        
+    }
+
+    @media (max-width:640px) {
+        background-image: url("../../../public/Images/banner2.jpg") !important;
+        background-position:left !important;
     }
 
     @media (min-height:660px) and (max-height:860px)  {
