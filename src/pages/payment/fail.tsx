@@ -20,7 +20,7 @@ export default function Fail() {
       <Center style={{ height: "100vh", flexDirection: "column" }}>
         <IconAlertSquareRounded size={70} color="rgb(250, 82, 82)" />
         <Title order={1} mt={-2} c="red">
-          Payment Failed
+          Booking Failed
         </Title>
         <Text mt="sm" c="dimmed">
           {errorMessage} Please try again or contact support.

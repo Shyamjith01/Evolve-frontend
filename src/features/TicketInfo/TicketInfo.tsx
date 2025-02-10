@@ -132,7 +132,6 @@ export default function TicketInfo() {
     const fetchEvents = async () => {
       try {
         const response = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/events/ticket-categories`);
-        console.log(response,"axios response")
         const dataWithCount = response.data.map((item:any) => ({
           ...item,
           count: item.name === "COPORATE TICKET" ? 5 : 1

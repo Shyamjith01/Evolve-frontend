@@ -40,7 +40,6 @@ interface CardData {
 }
 
 const ResponsiveGrid = ({ ticketsData }: { ticketsData: any }) => {
-  console.log("process.env.STRIPE_KEY", process.env.NEXT_PUBLIC_STRIPE_KEY);
   const [isLoading, setIsLoading] = useState(false);
 
   const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY as string);
@@ -108,14 +107,23 @@ const ResponsiveGrid = ({ ticketsData }: { ticketsData: any }) => {
     }
   };
 
-  const handleSubmit = async (formvalue: any) => {
-    console.log("formvalue", formvalue);
+  const redirectFunction=async (response:any)=>{
+    const stripe = await stripePromise;
+    if (stripe) {
+      const { error } = await stripe.redirectToCheckout({
+        sessionId: response.data.session_id,
+      })
+    }
+  }
 
+  const handleSubmit = async (formvalue: any) => {
     const Rq = {
       ticket_id: selectedTicket?.id,
       quantity: selectedTicket?.count,
       user_email: formvalue.email.toLowerCase(),
-    };
+      mobile_number:formvalue.phone,
+      user_name:formvalue.name
+    }; 
 
     try {
       setIsLoading(true);
@@ -129,25 +137,19 @@ const ResponsiveGrid = ({ ticketsData }: { ticketsData: any }) => {
           data: Rq,
         }
       );
- 
-      const stripe = await stripePromise;
-
-      if (stripe) {
-        const { error } = await stripe.redirectToCheckout({
-          sessionId: response.data.session_id,
-        });
-      }
-
-      console.log("api response", response);
+    
+      redirectFunction(response)
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1500);
     } catch (error) {
-      setIsLoading(false)
+      setIsLoading(false);
       console.log("api error", error);
       notifications.show({
         title: 'Something went wrong',
-        color:"red",
+        color: "red",
         message: 'Please try again after some times.',
-      })
-
+      });
     }
   };
 
